@@ -8,3 +8,8 @@ export interface CustomButtonProps {
    btnType?: "button" | "submit";
 
 }
+
+export interface SearchBreedsProps{
+  MenuBreeds: String;
+  setMenuBreeds:(MenuBreeds : String)=>void;
+}

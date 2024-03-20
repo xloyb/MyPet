@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import SearchBar from "./SearchBar";
 import CustomFilter from "./CustomFilter";
+import SearchBreeds from "./SearchBreeds";
 
 
 export {
@@ -13,4 +14,5 @@ export {
     Footer,
     SearchBar,
     CustomFilter,
+    SearchBreeds,
 }
