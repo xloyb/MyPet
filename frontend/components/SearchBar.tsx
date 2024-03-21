@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import React from 'react'
-import { SearchBreeds } from '.'
+import { SearchMenuBreeds } from '.'
 
 function SearchBar() {
 
@@ -12,7 +12,7 @@ function SearchBar() {
     <form className='searchbar'
      onSubmit={handleSearch}>
       <div className='searchbar__item'>
-        <SearchBreeds 
+        <SearchMenuBreeds 
         MenuBreeds={MenuBreeds}
         setMenuBreeds={setMenuBreeds}
         />

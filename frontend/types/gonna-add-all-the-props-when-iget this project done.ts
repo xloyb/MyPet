@@ -2,7 +2,7 @@ import { MouseEventHandler } from "react";
 
 export interface CustomButtonProps {
   containerStyles?: string;
-  title: string;
+  title?: string;
   handleClick?:
    MouseEventHandler<HTMLButtonElement>;
    btnType?: "button" | "submit";
@@ -10,6 +10,6 @@ export interface CustomButtonProps {
 }
 
 export interface SearchBreedsProps{
-  MenuBreeds: String;
-  setMenuBreeds:(MenuBreeds : String)=>void;
+  MenuBreeds?: String;
+  setMenuBreeds?: (MenuBreeds: String) => void;
 }

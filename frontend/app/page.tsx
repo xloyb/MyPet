@@ -1,8 +1,16 @@
 import Image from "next/image";
 
 import { CustomFilter, Hero, SearchBar } from "@/components";
+import { FetchAllPets } from '@/utils'
+import PetCard from "@/components/PetCard";
 
-export default function Home() {
+export default async function Home() {
+  const allPets = await FetchAllPets();
+
+  const isDataEmpty = !Array.isArray(allPets) || allPets.length<1 ||!allPets;
+
+  // console.log(allPets);
+
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -18,10 +26,38 @@ export default function Home() {
           <SearchBar />
 
           <div className='home__filter-container'>
-            <CustomFilter title='Breeds' />
-            <CustomFilter title='Age' />
+            <CustomFilter title="Breeds" />
+            <CustomFilter title="Age" />
           </div>
         </div>
+<div className="content-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+
+
+        <PetCard
+        title="Shoes!"
+        imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+        description="If a dog chews shoes whose shoes does he choose?"
+      />
+
+<PetCard
+        title="Shoes!"
+        imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+        description="If a dog chews shoes whose shoes does he choose?"
+      />
+
+<PetCard
+        title="Shoes!"
+        imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+        description="If a dog chews shoes whose shoes does he choose?"
+      />
+
+<PetCard
+        title="Shoes!"
+        imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+        description="If a dog chews shoes whose shoes does he choose?"
+      />
+</div>
+
       </div>
     </main>
   );
