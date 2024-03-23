@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import Sidebar from '../ui/sidebar/sidebar';
-import Dnavbar from '../ui/d-navbar/dnavbar';
+import Sidebar from '../ui/dashboard/sidebar/sidebar';
+import Dnavbar from '../ui/dashboard/d-navbar/dnavbar';
 import styles from './dashboard.module.css'
 
 interface LayoutProps {
