@@ -22,14 +22,91 @@ const Sidebar = () => {
   </div>
   <div className="ml-4"> 
     <span className="font-semibold">xLoy</span>
+   
+  </div>
+  
+</div>
+
+      {/* <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+       
+        <li><a>Sidebar Item 1</a></li>
+        <li><a>Sidebar Item 2</a></li>
+      </ul> */}
+
+<div className='menu p-4 w-80 min-h-full bg-base-200 text-base-content'>
+
+
+<div className="collapse collapse-plus border border-base-300">
+  <input type="checkbox" className="peer" /> 
+  <div className="collapse-title">
+  Category 1
+  </div>
+  <div className="collapse-content"> 
+    <ul>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+    </ul>
   </div>
 </div>
 
-      <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-        {/* Sidebar content here */}
-        <li><a>Sidebar Item 1</a></li>
-        <li><a>Sidebar Item 2</a></li>
-      </ul>
+
+<div className="collapse collapse-plus border border-base-300">
+  <input type="checkbox" className="peer" /> 
+  <div className="collapse-title">
+  Category 2
+  </div>
+  <div className="collapse-content"> 
+    <ul>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div className="collapse collapse-plus border border-base-300">
+  <input type="checkbox" className="peer" /> 
+  <div className="collapse-title">
+  Category 3
+  </div>
+  <div className="collapse-content"> 
+    <ul>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div className="collapse collapse-plus border border-base-300">
+  <input type="checkbox" className="peer" /> 
+  <div className="collapse-title">
+  Category 4
+  </div>
+  <div className="collapse-content"> 
+    <ul>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+    </ul>
+  </div>
+</div>
+
+
+</div>
     
     </div>
   </div></div>
