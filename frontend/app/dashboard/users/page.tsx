@@ -5,9 +5,10 @@ import Link from 'next/link'
 import Pagination from '@/app/ui/dashboard/pagination/pagination';
 import {fetchUsers} from '@/app/lib/data'
 
-const UsersPage = async () => {
+const UsersPage = async ({searchParams}) => {
 
-  const users =  await fetchUsers();
+  const q = searchParams?.q || "";
+  const users =  await fetchUsers(q);
   console.log(users);
   return (
     <div className={styles.users_container}>
