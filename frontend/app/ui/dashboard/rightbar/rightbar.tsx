@@ -1,7 +1,7 @@
 import React from 'react';
 import { MdPlayCircleFilled, MdReadMore } from 'react-icons/md';
 import Image from 'next/image';
-import puppy from '../../../public/images/puppy.png';
+import puppy from '../../../../public/images/puppy.png';
 
 const Rightbar = () => {
   return (
