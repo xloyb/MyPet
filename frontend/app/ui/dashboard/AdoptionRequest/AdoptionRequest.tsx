@@ -4,6 +4,7 @@ const AdoptionRequest = () => {
   return (
     <div>
       <div className="overflow-x-auto">
+        <h1 className='pl-9 text-xl font-bold'>Adoption Requests </h1>
   <table className="table">
     {/* head */}
     <thead>

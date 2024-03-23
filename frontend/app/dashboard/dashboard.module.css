@@ -36,3 +36,15 @@ gap: 20px;
 .side{
 flex: 1;
 }
+
+.users_container{
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
