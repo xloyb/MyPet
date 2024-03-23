@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const PetsSchema = new mongoose.Schema(
+const petSchema = new mongoose.Schema(
   {
     breed: {
         type: String,
@@ -76,5 +76,4 @@ const PetsSchema = new mongoose.Schema(
 );
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
-export const Pets =
-  mongoose.models.Pets || mongoose.model("Pets", petsSchema);
+export const Pets = mongoose.models.Pets || mongoose.model("Pets", petSchema);
