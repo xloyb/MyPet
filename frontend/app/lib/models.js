@@ -76,4 +76,4 @@ const petSchema = new mongoose.Schema(
 );
 
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
-export const Pets = mongoose.models.Pets || mongoose.model("Pets", petSchema);
+export const Pet = mongoose.models.Pet || mongoose.model("Pet", petSchema);

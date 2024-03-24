@@ -9,7 +9,7 @@ const UsersPage = async ({searchParams}) => {
 
   const q = searchParams?.q || "";
   const users =  await fetchUsers(q);
-  console.log(users);
+  // console.log(users);
   return (
     <div className={styles.users_container}>
       <div className={styles.top}>

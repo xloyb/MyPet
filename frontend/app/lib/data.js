@@ -1,4 +1,4 @@
-import { Pets, User } from "./models";
+import { Pet, User } from "./models";
 import { connectToDB } from "./utils";
 
 export const fetchUsers = async (q) => {
@@ -13,6 +13,20 @@ export const fetchUsers = async (q) => {
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch Users!");
+  }
+};
+
+
+
+export const fetchPets = async (q) => {
+  const regex = new RegExp(q, "i");
+  try {
+    connectToDB();
+    const Pets = await Pet.find({ breed: { $regex: regex } });
+    return Pets;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch Pets!");
   }
 };
 
