@@ -4,6 +4,7 @@ import Search from '@/app/ui/dashboard/search/search'
 import Link from 'next/link'
 import Pagination from '@/app/ui/dashboard/pagination/pagination';
 import { fetchPets } from '@/app/lib/data'
+import { deletPet } from '@/app/lib/actions';
 
 const PetsPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
@@ -14,7 +15,7 @@ const PetsPage = async ({ searchParams }) => {
     <div className={styles.home_container}>
       <div className={styles.top}>
         <Search placeholder="Search for pet ..." />
-        <Link href="dashboard/pets/add">
+        <Link href="/dashboard/pets/add">
           <button className="btn btn-primary">add new pet</button>
         </Link>
       </div>
@@ -58,7 +59,10 @@ const PetsPage = async ({ searchParams }) => {
 
                   <th>
                     <button className="btn btn-ghost btn-xs">details</button>
-                    <button className="btn btn-ghost btn-xs">details</button>
+                  <form action={deletPet}>
+                    <input type='hidden' name='id' value={pet.id}></input>
+                    <button type='submit' className="btn btn-ghost btn-xs">Delete</button>
+                  </form>
                   </th>
                 </tr>
               ))}

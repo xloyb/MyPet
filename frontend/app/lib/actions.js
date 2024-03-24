@@ -60,3 +60,35 @@ export const addPet = async (formData) => {
   revalidatePath("/dashboard/pets");
   redirect("/dashboard/pets");
 };
+
+
+export const deletPet = async (formData) => {
+  const { id } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    await Pet.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete Pet!");
+  }
+  revalidatePath("/dashboard/pets");
+};
+
+
+export const deletUser = async (formData) => {
+  const { id } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    await User.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete User!");
+  }
+  revalidatePath("/dashboard/users");
+};
