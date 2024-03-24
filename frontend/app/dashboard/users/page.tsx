@@ -11,7 +11,7 @@ const UsersPage = async ({searchParams}) => {
   const users =  await fetchUsers(q);
   // console.log(users);
   return (
-    <div className={styles.users_container}>
+    <div className={styles.home_container}>
       <div className={styles.top}>
         <Search placeholder="Search for user ..." />
         <Link href="dashboard/users/add">
