@@ -88,7 +88,7 @@ const SingleUserPage = async ({params}) => {
                                 </div>
 
                                 <select name="isAdmin" id="isAdmin" className="block w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                                    <option value="false">
+                                    <option value="">
                                         Is Admin?
                                     </option>
                                     <option value="true">Yes</option>
@@ -96,7 +96,7 @@ const SingleUserPage = async ({params}) => {
                                 </select>
 
                                 <select name="isActive" id="isActive" className="block w-full mt-2 px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                                    <option value="true">
+                                    <option value="">
                                         Is Active?
                                     </option>
                                     <option value="true">Yes</option>
