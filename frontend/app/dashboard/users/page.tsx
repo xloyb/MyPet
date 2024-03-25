@@ -57,7 +57,14 @@ const UsersPage = async ({searchParams}) => {
                 </td>
                
                 <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
+
+                  <Link href={`/dashboard/users/${user.id}`}>
+                    <button className="btn btn-ghost btn-xs">
+                      Update
+                    </button>
+                  </Link>
+
+
                   <form action={deletUser}>
                     <input type='hidden' name='id' value={user.id}></input>
                     <button type='submit' className="btn btn-ghost btn-xs">Delete</button>

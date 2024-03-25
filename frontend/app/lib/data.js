@@ -16,8 +16,6 @@ export const fetchUsers = async (q) => {
   }
 };
 
-
-
 export const fetchPets = async (q) => {
   const regex = new RegExp(q, "i");
   try {
@@ -30,26 +28,26 @@ export const fetchPets = async (q) => {
   }
 };
 
-// export const fetchUsers = async (id) => {
-//     try {
-//         connectToDB();
-//       const Users = await User.find();
-//       return Users;
-//     } catch (err) {
-//       console.log(err);
-//       throw new Error("Failed to fetch Users!");
-//     }
-//   };
+export const fetchPet = async (id) => {
+  try {
+    connectToDB();
 
-//   export const fetchUsers = async (q) => {
-//       const regex = new RegExp(q, "i");
-//       try {
-//         connectToDB();
-//         const count = await User.find({ username: { $regex: regex } }).count();
-//         const users = await User.find({ username: { $regex: regex } })
-//         return { count, users };
-//       } catch (err) {
-//         console.log(err);
-//         throw new Error("Failed to fetch users!");
-//       }
-//     };
+    const pett = await Pet.findById(id);
+    return pett;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch pet!");
+  }
+};
+
+export const fetchUser = async (id) => {
+  try {
+    connectToDB();
+    const user = await User.findById(id);
+    return user;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch user!");
+  }
+};
+

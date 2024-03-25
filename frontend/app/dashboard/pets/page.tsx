@@ -55,10 +55,16 @@ const PetsPage = async ({ searchParams }) => {
                     <br />
                     <span className="badge badge-ghost badge-sm">{pet.desc}</span>
                   </td>
-
-
                   <th>
-                    <button className="btn btn-ghost btn-xs">details</button>
+
+                  <Link href={`/dashboard/pets/${pet.id}`}>
+                    <button className="btn btn-ghost btn-xs">
+                      Update
+                    </button>
+                  </Link>
+
+
+                    
                   <form action={deletPet}>
                     <input type='hidden' name='id' value={pet.id}></input>
                     <button type='submit' className="btn btn-ghost btn-xs">Delete</button>
@@ -66,12 +72,7 @@ const PetsPage = async ({ searchParams }) => {
                   </th>
                 </tr>
               ))}
-
-
             </tbody>
-
-
-
           </table>
         </div>
       </div>

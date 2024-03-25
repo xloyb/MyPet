@@ -1,12 +1,10 @@
-"use server"
+"use server";
 
 import { revalidatePath } from "next/cache";
 import { Pet, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
-
-
 
 export const addUser = async (formData) => {
   const { username, email, password, phone, address, isAdmin, isActive } =
@@ -37,8 +35,6 @@ export const addUser = async (formData) => {
   redirect("/dashboard/users");
 };
 
-
-
 export const addPet = async (formData) => {
   const { breed, name, desc, price, stock, img, age } =
     Object.fromEntries(formData);
@@ -46,9 +42,14 @@ export const addPet = async (formData) => {
   try {
     connectToDB();
 
-    
     const newPet = new Pet({
-      breed, name, desc, price, stock, img, age,
+      breed,
+      name,
+      desc,
+      price,
+      stock,
+      img,
+      age,
     });
 
     await newPet.save();
@@ -61,10 +62,8 @@ export const addPet = async (formData) => {
   redirect("/dashboard/pets");
 };
 
-
 export const deletPet = async (formData) => {
-  const { id } =
-    Object.fromEntries(formData);
+  const { id } = Object.fromEntries(formData);
 
   try {
     connectToDB();
@@ -77,10 +76,8 @@ export const deletPet = async (formData) => {
   revalidatePath("/dashboard/pets");
 };
 
-
 export const deletUser = async (formData) => {
-  const { id } =
-    Object.fromEntries(formData);
+  const { id } = Object.fromEntries(formData);
 
   try {
     connectToDB();
@@ -91,4 +88,67 @@ export const deletUser = async (formData) => {
     throw new Error("Failed to delete User!");
   }
   revalidatePath("/dashboard/users");
+};
+
+export const UpdatePet = async (formData) => {
+  const { id, breed, name, desc, price, stock, img, age } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    const UpdatedFields = {
+      breed,
+      name,
+      desc,
+      price,
+      stock,
+      img,
+      age,
+    };
+
+    Object.keys(UpdatedFields).forEach(
+      (key) =>
+        (UpdatedFields[key] === "" || undefined) && delete UpdatedFields[key]
+    );
+
+    await Pet.findByIdAndUpdate(id, UpdatedFields);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to update Pet!");
+  }
+
+  revalidatePath("/dashboard/pets");
+  redirect("/dashboard/pets");
+};
+
+export const UpdateUser = async (formData) => {
+  const { id, username, email, password, phone, address, isAdmin, isActive } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    const UpdatedFields = {
+      username,
+      email,
+      password,
+      phone,
+      address,
+      isAdmin,
+      isActive,
+    };
+
+    Object.keys(UpdatedFields).forEach(
+      (key) =>
+        (UpdatedFields[key] === "" || undefined) && delete UpdatedFields[key]
+    );
+
+    console.log("fecth isssssssssssssssssssssssssssssss", id);
+    await User.findByIdAndUpdate(id, UpdatedFields);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to update User!");
+  }
+
+  revalidatePath("/dashboard/users");
+  redirect("/dashboard/users");
 };
