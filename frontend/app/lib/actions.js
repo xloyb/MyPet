@@ -1,10 +1,12 @@
-"use server";
 
+"use server";
 import { revalidatePath } from "next/cache";
 import { Pet, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
+import { signIn } from "../auth"
+
 
 export const addUser = async (formData) => {
   const { username, email, password, phone, address, isAdmin, isActive } =
@@ -153,4 +155,38 @@ export const UpdateUser = async (formData) => {
 
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
+};
+
+
+// export const authenticate = async (formData) => {
+
+//   const { username, password } = Object.fromEntries(formData);
+//   try {
+//     await signIn("credentials", { username, password });
+//   } catch (err) {
+   
+//      console.log(err)
+//      throw err;
+//     }
+  
+// };
+
+
+export const authenticate = async (formData) => {
+  
+  // console.log("formData:", formData); 
+   const { username, password } = Object.fromEntries(formData);
+  // const username = "louay";
+  // const password = "admin";
+
+
+  console.log(username + ", " + password);
+
+  try {
+    await signIn("credentials", { username, password });
+    console.log("_________________________________________im inside authenticate");
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
 };
