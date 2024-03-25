@@ -9,8 +9,6 @@ import { deletPet } from '@/app/lib/actions';
 const PetsPage = async ({ searchParams }) => {
   const q = searchParams?.q || "";
   const pets = await fetchPets(q);
-  console.log("Hello World");
-  console.log(pets);
   return (
     <div className={styles.home_container}>
       <div className={styles.top}>

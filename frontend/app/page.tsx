@@ -7,7 +7,7 @@ import PetCard from "@/components/PetCard";
 export default async function Home() {
   const allPets = await FetchAllPets();
 
-  const isDataEmpty = !Array.isArray(allPets) || allPets.length<1 ||!allPets;
+  const isDataEmpty = !Array.isArray(allPets) || allPets.length < 1 || !allPets;
 
   // console.log(allPets);
 
@@ -30,33 +30,33 @@ export default async function Home() {
             <CustomFilter title="Age" />
           </div>
         </div>
-<div className="content-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+        <div className="content-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
 
 
-        <PetCard
-        title="Shoes!"
-        imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-        description="If a dog chews shoes whose shoes does he choose?"
-      />
+          <PetCard
+            title="Shoes!"
+            imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            description="If a dog chews shoes whose shoes does he choose?"
+          />
 
-<PetCard
-        title="Shoes!"
-        imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-        description="If a dog chews shoes whose shoes does he choose?"
-      />
+          <PetCard
+            title="Shoes!"
+            imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            description="If a dog chews shoes whose shoes does he choose?"
+          />
 
-<PetCard
-        title="Shoes!"
-        imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-        description="If a dog chews shoes whose shoes does he choose?"
-      />
+          <PetCard
+            title="Shoes!"
+            imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            description="If a dog chews shoes whose shoes does he choose?"
+          />
 
-<PetCard
-        title="Shoes!"
-        imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-        description="If a dog chews shoes whose shoes does he choose?"
-      />
-</div>
+          <PetCard
+            title="Shoes!"
+            imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            description="If a dog chews shoes whose shoes does he choose?"
+          />
+        </div>
 
       </div>
     </main>

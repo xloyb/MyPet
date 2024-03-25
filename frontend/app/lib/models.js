@@ -75,5 +75,32 @@ const petSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+
+const adoptionRequestSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    pet: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Pet',
+      required: true
+    },
+    status: {
+      type: String,
+      enum: ['pending', 'approved', 'rejected'],
+      default: 'pending'
+    },
+    message: {
+      type: String
+    }
+  },
+  { timestamps: true }
+);
+
+export const AdoptionRequest = mongoose.models.AdoptionRequest || mongoose.model("AdoptionRequest", adoptionRequestSchema);
+
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
 export const Pet = mongoose.models.Pet || mongoose.model("Pet", petSchema);
