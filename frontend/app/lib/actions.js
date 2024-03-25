@@ -127,10 +127,13 @@ export const UpdateUser = async (formData) => {
 
   try {
     connectToDB();
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const UpdatedFields = {
       username,
       email,
-      password,
+      password:hashedPassword,
       phone,
       address,
       isAdmin,
@@ -142,7 +145,6 @@ export const UpdateUser = async (formData) => {
         (UpdatedFields[key] === "" || undefined) && delete UpdatedFields[key]
     );
 
-    console.log("fecth isssssssssssssssssssssssssssssss", id);
     await User.findByIdAndUpdate(id, UpdatedFields);
   } catch (err) {
     console.log(err);

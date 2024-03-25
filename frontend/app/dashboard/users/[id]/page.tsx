@@ -8,8 +8,6 @@ import { fetchUser } from '@/app/lib/data';
 const SingleUserPage = async ({params}) => {
 
     const { id } = await params;
-    
-console.log("id ftontttttttttttttttttttttttttt",id);
     const user = await fetchUser(id);
 
 
