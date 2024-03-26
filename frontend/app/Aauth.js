@@ -1,3 +1,4 @@
+
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { authConfig } from "./authconfig";
@@ -9,7 +10,7 @@ const login = async (credentials) => {
   try {
     connectToDB();
     const user = await User.findOne({ username: credentials.username });
-
+    console.log(user)
     if (!user) throw new Error("Wrong credentials!");
 
     const isPasswordCorrect = await bcrypt.compare(
@@ -26,14 +27,14 @@ const login = async (credentials) => {
   }
 };
 
-export const { signIn, signOut, auth } = NextAuth({
+export const { signIn, signOut, auth } =  NextAuth({
   ...authConfig,
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
         try {
+          // console.log("ffffffffffffffffffffffffffffffffffffffff")
           const user = await login(credentials);
-          console.log("_________________________________________im inside SignIn");
           return user;
         } catch (err) {
           return null;

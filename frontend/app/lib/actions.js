@@ -5,7 +5,8 @@ import { Pet, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
-import { signIn } from "../auth"
+// import { signIn } from "../auth"
+import { signIn } from "../../auth"
 
 
 export const addUser = async (formData) => {
@@ -158,35 +159,22 @@ export const UpdateUser = async (formData) => {
 };
 
 
-// export const authenticate = async (formData) => {
-
-//   const { username, password } = Object.fromEntries(formData);
-//   try {
-//     await signIn("credentials", { username, password });
-//   } catch (err) {
-   
-//      console.log(err)
-//      throw err;
-//     }
-  
-// };
-
 
 export const authenticate = async (formData) => {
-  
-  // console.log("formData:", formData); 
-   const { username, password } = Object.fromEntries(formData);
-  // const username = "louay";
-  // const password = "admin";
-
-
-  console.log(username + ", " + password);
-
   try {
-    await signIn("credentials", { username, password });
-    console.log("_________________________________________im inside authenticate");
+    const { username, password } = Object.fromEntries(
+      Object.entries(formData).filter(([key, value]) => typeof key === 'string')
+    );
+    console.log("-----------------------------------");
+    console.log(username + ", " + password);
+
+    const usern ='admin'
+    const pass ='$2b$10$ZzEKPdruACPjTpC.FxJk3ujuNkA.BpRuViFjwWT.63d8AxUxztvSK'
+
+    await signIn('credentials', { usern, pass });
   } catch (err) {
     console.log(err);
     throw err;
   }
 };
+
