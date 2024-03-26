@@ -56,10 +56,10 @@ const UsersPage = async ({searchParams}) => {
                   <span className="badge badge-ghost badge-sm">{user.address}</span>
                 </td>
                
-                <th>
+                <th className='flex'>
 
                   <Link href={`/dashboard/users/${user.id}`}>
-                    <button className="btn btn-ghost btn-xs">
+                    <button className="btn btn-success">
                       Update
                     </button>
                   </Link>
@@ -67,7 +67,7 @@ const UsersPage = async ({searchParams}) => {
 
                   <form action={deletUser}>
                     <input type='hidden' name='id' value={user.id}></input>
-                    <button type='submit' className="btn btn-ghost btn-xs">Delete</button>
+                    <button type='submit' className="btn btn-error">Delete</button>
                   </form>
                 </th>
               </tr>

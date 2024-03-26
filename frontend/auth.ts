@@ -2,22 +2,33 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
 import { z } from 'zod';
-import { User } from './app/lib/models';
+import { User as UserModel } from './app/lib/models';
 import bcrypt from 'bcrypt';
 import { connectToDB } from './app/lib/utils';
- 
-async function getUser(username: string): Promise<User | undefined> {
+
+// Define the CustomUser interface
+interface CustomUser {
+  _id: string;
+  username: string;
+  email: string;
+  img?: string;
+  isAdmin: boolean;
+  isActive: boolean;
+  phone?: string;
+  address?: string;
+}
+
+async function getUser(username: string): Promise<UserModel | undefined> {
   try {
-   // const user = await sql<User>`SELECT * FROM users WHERE email=${email}`;*
-   connectToDB();
-    const user = await User.findOne({ username: username });
+    connectToDB();
+    const user = await UserModel.findOne({ username: username });
     return user;
   } catch (error) {
     console.error('Failed to fetch user:', error);
     throw new Error('Failed to fetch user.');
   }
 }
- 
+
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
@@ -35,10 +46,37 @@ export const { auth, signIn, signOut } = NextAuth({
           if (passwordsMatch) return user;
         }
         console.log('Invalid credentials');
-        
- 
         return null;
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        const customUser: CustomUser = user;
+        token._id = customUser._id;
+        token.username = customUser.username;
+        token.email = customUser.email;
+        token.img = customUser.img || '';
+        token.isAdmin = customUser.isAdmin;
+        token.isActive = customUser.isActive;
+        token.phone = customUser.phone || '';
+        token.address = customUser.address || '';
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user._id = token._id;
+        session.user.username = token.username;
+        session.user.email = token.email;
+        session.user.img = token.img || '';
+        session.user.isAdmin = token.isAdmin;
+        session.user.isActive = token.isActive;
+        session.user.phone = token.phone || '';
+        session.user.address = token.address || '';
+      }
+      return session;
+    },
+  },
 });

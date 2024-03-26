@@ -53,10 +53,10 @@ const PetsPage = async ({ searchParams }) => {
                     <br />
                     <span className="badge badge-ghost badge-sm">{pet.desc}</span>
                   </td>
-                  <th>
+                  <th className='flex'>
 
                   <Link href={`/dashboard/pets/${pet.id}`}>
-                    <button className="btn btn-ghost btn-xs">
+                    <button className="btn btn-success">
                       Update
                     </button>
                   </Link>
@@ -65,7 +65,7 @@ const PetsPage = async ({ searchParams }) => {
                     
                   <form action={deletPet}>
                     <input type='hidden' name='id' value={pet.id}></input>
-                    <button type='submit' className="btn btn-ghost btn-xs">Delete</button>
+                    <button type='submit' className="btn btn-error">Delete</button>
                   </form>
                   </th>
                 </tr>
