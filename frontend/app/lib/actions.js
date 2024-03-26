@@ -175,6 +175,6 @@ export const authenticate = async (formData) => {
   } catch (err) {
     console.log(err);
     throw err;
-  }
+  } 
 };
 
