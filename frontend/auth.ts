@@ -4,8 +4,6 @@ import { authConfig } from './auth.config';
 import { z } from 'zod';
 import { User } from './app/lib/models';
 import bcrypt from 'bcrypt';
-
-
 import { connectToDB } from './app/lib/utils';
  
 async function getUser(username: string): Promise<User | undefined> {
@@ -26,7 +24,7 @@ export const { auth, signIn, signOut } = NextAuth({
     Credentials({
       async authorize(credentials) {
         const parsedCredentials = z
-          .object({ username: z.string(), password: z.string().min(6) })
+          .object({ username: z.string(), password: z.string().min(3) })
           .safeParse(credentials);
  
         if (parsedCredentials.success) {

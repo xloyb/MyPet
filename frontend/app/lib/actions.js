@@ -162,16 +162,18 @@ export const UpdateUser = async (formData) => {
 
 export const authenticate = async (formData) => {
   try {
-    const { username, password } = Object.fromEntries(
-      Object.entries(formData).filter(([key, value]) => typeof key === 'string')
-    );
+    // const { username, password } = Object.fromEntries(
+    //   Object.entries(formData).filter(([key, value]) => typeof key === 'string')
+    // );
+
+    const { username, password } = Object.fromEntries(formData);
     console.log("-----------------------------------");
     console.log(username + ", " + password);
 
     const usern ='admin'
     const pass ='$2b$10$ZzEKPdruACPjTpC.FxJk3ujuNkA.BpRuViFjwWT.63d8AxUxztvSK'
 
-    await signIn('credentials', { usern, pass });
+    await signIn('credentials', { username, password });
   } catch (err) {
     console.log(err);
     throw err;

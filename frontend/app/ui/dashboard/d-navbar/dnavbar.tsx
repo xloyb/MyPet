@@ -1,3 +1,4 @@
+
 'use client'
 import { usePathname } from 'next/navigation';
 import React from 'react'
@@ -28,6 +29,7 @@ const Dnavbar = () => {
           </a>
         </li>
         <li><a>Settings</a></li>
+        
         <li><a>Logout</a></li>
       </ul>
     </div>
