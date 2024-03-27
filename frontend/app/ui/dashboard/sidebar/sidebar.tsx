@@ -102,7 +102,7 @@ const Sidebar = async () => {
                   <span><CgProfile className="mr-1" /> Pets List</span>
                 </li>
               </Link>
-              <Link href="/dashboard/users">
+              <Link href="/dashboard/myrequests">
                 <li className="font-medium ml-8 flex ">
 
                   <span><CgProfile className="mr-1" /> Adoption Requests </span>

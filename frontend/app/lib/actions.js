@@ -1,12 +1,31 @@
 
 "use server";
 import { revalidatePath } from "next/cache";
-import { Pet, User } from "./models";
+import { AdoptionRequest, Pet, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
 // import { signIn } from "../auth"
 import { signIn } from "../../auth"
+
+
+
+export const CreateResquest = async(formData)=>{
+
+  const { pid, uid,message } = Object.fromEntries(formData);
+  try{
+  connectToDB()
+  const newRequest = new AdoptionRequest({pet: pid ,user : uid, message: message, status:"pending"});
+  await newRequest.save();
+  
+  }  catch (err) {
+      console.log(err);
+      throw new Error("Failed to Create Request!");
+    }
+  
+    revalidatePath("/dashboard/myrequests");
+    redirect("/dashboard/myrequests");
+  }
 
 
 export const addUser = async (formData) => {
@@ -169,9 +188,6 @@ export const authenticate = async (formData) => {
     const { username, password } = Object.fromEntries(formData);
     console.log("-----------------------------------");
     console.log(username + ", " + password);
-
-    const usern ='admin'
-    const pass ='$2b$10$ZzEKPdruACPjTpC.FxJk3ujuNkA.BpRuViFjwWT.63d8AxUxztvSK'
 
     await signIn('credentials', { username, password });
   } catch (err) {

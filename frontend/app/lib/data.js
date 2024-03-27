@@ -1,5 +1,32 @@
-import { Pet, User } from "./models";
+import { AdoptionRequest, Pet, User } from "./models";
 import { connectToDB } from "./utils";
+import { Types } from 'mongoose';
+
+
+
+
+
+
+
+export const fetchUserRequests = async (uid) => {
+  console.log("User ID:", uid);
+  try {
+    connectToDB();
+    //const requests = await AdoptionRequest.findById('660367f324ad8217be668004')
+    //const requests = await AdoptionRequest.find({ user: Types.ObjectId(uid) });
+    const requests = await AdoptionRequest.find({ user: new Types.ObjectId(uid) });
+    console.log("testststst",requests)
+    return requests;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch User Requests!");
+  }
+};
+
+
+
+
+
 
 export const fetchUsers = async (q) => {
   const regex = new RegExp(q, "i");
@@ -31,7 +58,7 @@ export const fetchPets = async (q) => {
 export const fetchPet = async (id) => {
   try {
     connectToDB();
-
+    // console.log("checking id type inside the function",id)
     const pett = await Pet.findById(id);
     return pett;
   } catch (err) {
