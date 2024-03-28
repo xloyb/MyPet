@@ -36,9 +36,9 @@ const RequestsPage = async () => {
 
 
                   <form action={DeleteMyRequest}>
-                    <input type='text' value={ar._id} name='id'></input>
-                    <input type='text' value={user._id} name='suid'></input>
-                    <input type='text' value={ar.user.toString()} name='uid'></input>
+                    <input type='hidden' value={ar._id} name='id'></input>
+                    <input type='hidden' value={user._id} name='suid'></input>
+                    <input type='hidden' value={ar.user.toString()} name='uid'></input>
                   <div className="card-actions justify-end">
                     <button className="btn btn-primary" >Cancel Request</button>
                   </div>
