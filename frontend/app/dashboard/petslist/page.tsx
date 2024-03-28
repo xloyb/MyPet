@@ -8,8 +8,8 @@ const PetsList = async () => {
 
     const pets = await fetchPets();
     const { user } = await auth();
-    console.log("useryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-    console.log(user);
+    // console.log("useryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+    // console.log(user);
   return (
     <div className={styles.home_container} >
         <div className="content-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">

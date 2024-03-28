@@ -5,13 +5,36 @@ import { AdoptionRequest, Pet, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
-// import { signIn } from "../auth"
 import { signIn } from "../../auth"
 
 
 
-export const CreateResquest = async(formData)=>{
+export const DeleteMyRequest = async(formData)=>{
+  const {id,suid,uid} = Object.fromEntries(formData);
 
+// console.log(suid,"====",uid)
+  try {
+    connectToDB();
+    if(suid === uid){
+ await  AdoptionRequest.deleteOne({_id: id});
+    }else{
+      throw new Error("You cannot delete others requests");
+
+    }
+    
+  } catch (err) {
+    console.log(err);
+      throw new Error("Failed to delete Request!");
+    
+  }
+  revalidatePath("/dashboard/myrequests");
+  redirect("/dashboard/myrequests");
+}
+
+
+
+
+export const CreateResquest = async(formData)=>{
   const { pid, uid,message } = Object.fromEntries(formData);
   try{
   connectToDB()

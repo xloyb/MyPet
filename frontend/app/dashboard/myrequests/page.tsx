@@ -3,6 +3,7 @@ import { auth } from '@/auth'
 import Link from 'next/link';
 import React from 'react'
 import styles from '@/app/dashboard/dashboard.module.css'
+import { DeleteMyRequest } from '@/app/lib/actions';
 
 const RequestsPage = async () => {
   
@@ -32,9 +33,16 @@ const RequestsPage = async () => {
                   <p className='text-5xl font-bold'></p>
                   <p className='py-6'>{ar.message}</p>
                   <span className={`inline-block rounded-lg px-3 py-1 text-center ${ar.status === "approved" ? 'bg-green-500 text-white' : ar.status === "pending" ? 'bg-yellow-500 text-black' : ar.status === "rejected" ? 'bg-red-500 text-white' : ''}`}>{ar.status}</span>
-                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary" disabled>Cancel Request</button>
+
+
+                  <form action={DeleteMyRequest}>
+                    <input type='text' value={ar._id} name='id'></input>
+                    <input type='text' value={user._id} name='suid'></input>
+                    <input type='text' value={ar.user.toString()} name='uid'></input>
+                  <div className="card-actions justify-end">
+                    <button className="btn btn-primary" >Cancel Request</button>
                   </div>
+                  </form>
                 </div>
               </div>
             </div>

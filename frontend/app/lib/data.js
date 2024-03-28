@@ -15,7 +15,7 @@ export const fetchUserRequests = async (uid) => {
     //const requests = await AdoptionRequest.findById('660367f324ad8217be668004')
     //const requests = await AdoptionRequest.find({ user: Types.ObjectId(uid) });
     const requests = await AdoptionRequest.find({ user: new Types.ObjectId(uid) });
-    console.log("testststst",requests)
+    //console.log("testststst",requests)
     return requests;
   } catch (err) {
     console.log(err);

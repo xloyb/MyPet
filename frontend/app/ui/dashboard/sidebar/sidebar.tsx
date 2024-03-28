@@ -118,7 +118,7 @@ const Sidebar = async () => {
 
                 <span>Admin Area</span>
               </li>
-              <Link href="/dashboard/petslist">
+              <Link href="/dashboard/users">
                 <li className="font-medium ml-8 ">
 
                   <span><CgProfile className="mr-1" /> Users List</span>
@@ -156,7 +156,7 @@ const Sidebar = async () => {
               <Link target="_blank" href="https://helpdesk.mydevify.com/tickets/create_new">
                 <li className="font-medium ml-8 ">
 
-                  <span><CgProfile className="mr-1" /> Report a Bug</span>
+                  <span><CgProfile className="mr-1" /> Bug Report</span>
                 </li>
               </Link>
               <Link target="_blank" href="https://helpdesk.mydevify.com/tickets/create_new">
