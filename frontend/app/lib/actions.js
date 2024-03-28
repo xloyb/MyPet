@@ -9,9 +9,29 @@ import { signIn } from "../../auth"
 
 
 
+export const ManageRequest = async(formData)=>{
+  const {id, status} = Object.fromEntries(formData);
+
+  //const rp = await AdoptionRequest.find( { _id: rui } );
+  console.log("ayway",id,status)
+  try {
+    connectToDB()
+    await AdoptionRequest.findByIdAndUpdate( id ,{ status : status });
+    
+  } catch (err) {
+    console.log(err)
+    throw new Error("Failed to update request");
+    
+  }
+
+  revalidatePath("/dashboard/managerequests");
+  redirect("/dashboard/managerequests");
+
+}
+
+
 export const DeleteMyRequest = async(formData)=>{
   const {id,suid,uid} = Object.fromEntries(formData);
-
 // console.log(suid,"====",uid)
   try {
     connectToDB();

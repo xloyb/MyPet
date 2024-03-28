@@ -5,11 +5,20 @@ import { Types } from 'mongoose';
 
 
 
-
+export const fetchAllRequests = async () => {
+  try {
+    connectToDB();
+    const requests = await AdoptionRequest.find();
+    return requests;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch User Requests!");
+  }
+};
 
 
 export const fetchUserRequests = async (uid) => {
-  console.log("User ID:", uid);
+  //console.log("User ID:", uid);
   try {
     connectToDB();
     //const requests = await AdoptionRequest.findById('660367f324ad8217be668004')

@@ -144,6 +144,13 @@ const Sidebar = async () => {
                 </li>
               </Link>
 
+              <Link href="/dashboard/managerequests">
+                <li className="font-medium ml-8 flex ">
+
+                  <span><CgProfile className="mr-1" /> Manage Requests </span>
+                </li>
+              </Link>
+
             </div>
 
 
