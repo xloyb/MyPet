@@ -2,13 +2,19 @@ import { auth, signOut } from "@/auth";
 import Link from "next/link";
 import React from "react";
 import { CgProfile } from "react-icons/cg";
+import { CiSettings, CiTimer } from "react-icons/ci";
+import { FaBug, FaThList } from "react-icons/fa";
+import { FcApproval, FcIdea } from "react-icons/fc";
+import { IoIosAddCircle, IoMdPersonAdd } from "react-icons/io";
+import { IoSettings } from "react-icons/io5";
+import { MdAdminPanelSettings, MdOutlineBugReport, MdOutlinePets } from "react-icons/md";
 
 const Sidebar = async () => {
   const { user } = await auth();
 
   return (
-    <div>
-      <div className="drawer lg:drawer-open">
+    <div className="h-screen overflow-hidden sticky top-0 z-30 overflow-x-hidden">
+      <div className="drawer lg:drawer-open h-full overflow-hidden	">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
@@ -19,7 +25,7 @@ const Sidebar = async () => {
             Open drawer
           </label>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side overflow-hidden	">
           <label
             htmlFor="my-drawer-2"
             aria-label="close sidebar"
@@ -59,29 +65,45 @@ const Sidebar = async () => {
             <div className="collapse collapse-plus border border-base-300">
               <input type="checkbox" className="peer" />
 
-              <div className="collapse-title flex items-center font-bold uppercase">
+              <div className="collapse-title flex items-center">
                 {" "}
-               
-                Profile
+
+               <MdAdminPanelSettings className="text-2xl mr-1"/> Admin Controle Panel
               </div>
               <div className="collapse-content">
                 <ul>
 
+
                   <Link href="/dashboard/users">
-                    <li className="font-medium ml-4 w-10 flex ">
-                      <span>
-                        <CgProfile className="mr-1" />
-                        Profile
-                      </span>
+                    <li className="font-medium ml-8 ">
+
+                      <span><FaThList className="mr-1" /> Users List</span>
+                    </li>
+                  </Link>
+                  <Link href="/dashboard/pets">
+                    <li className="font-medium ml-8 flex ">
+
+                      <span><FaThList className="mr-1" /> Pets List </span>
                     </li>
                   </Link>
 
-                  <Link href="/dashboard/users">
-                    <li className="font-medium ml-4 w-10 flex ">
-                      <span>
-                        <CgProfile className="mr-1" />
-                        Settings
-                      </span>
+                  <Link href="/dashboard/users/add">
+                    <li className="font-medium ml-8 ">
+
+                      <span><IoMdPersonAdd className="mr-1" /> Add User</span>
+                    </li>
+                  </Link>
+                  <Link href="/dashboard/pets/add">
+                    <li className="font-medium ml-8 flex ">
+
+                      <span><IoIosAddCircle className="mr-1" /> Add Pet </span>
+                    </li>
+                  </Link>
+
+                  <Link href="/dashboard/managerequests">
+                    <li className="font-medium ml-8 flex ">
+
+                      <span><CgProfile className="mr-1" /> Manage Requests </span>
                     </li>
                   </Link>
 
@@ -90,96 +112,74 @@ const Sidebar = async () => {
               </div>
             </div>
 
+            <ul className="menu bg-base-200 w-56 rounded-box">
+              <li>
+                <h2 className="menu-title">Profile</h2>
+                <ul>
+                  <Link href="/dashboard/users">
+                    <li>
+                      <span>
+                        <CgProfile className="mr-1" />
+                        Profile
+                      </span>
+                    </li>
+                  </Link>
 
-            <div className="contents w-10 mb-3 avatar">
-              <li className="font-bold uppercase flex">
+                  <Link href="/dashboard/users">
+                    <li>
+                      <span>
+                        <IoSettings className="mr-1" />
+                        Settings
+                      </span>
+                    </li>
+                  </Link>
 
-                <span>Adoption</span>
+                </ul>
               </li>
-              <Link href="/dashboard/petslist">
-                <li className="font-medium ml-8 ">
-
-                  <span><CgProfile className="mr-1" /> Pets List</span>
-                </li>
-              </Link>
-              <Link href="/dashboard/myrequests">
-                <li className="font-medium ml-8 flex ">
-
-                  <span><CgProfile className="mr-1" /> Adoption Requests </span>
-                </li>
-              </Link>
-
-            </div>
+            </ul>
 
 
 
-            <div className="contents w-10 mb-3 avatar">
-              <li className="font-bold uppercase flex">
 
-                <span>Admin Area</span>
+            <ul className="menu bg-base-200 w-56 rounded-box">
+              <li>
+                <h2 className="menu-title">Adoption</h2>
+                <ul>
+                  <Link href="/dashboard/petslist">
+                    <li>
+
+                      <span><MdOutlinePets className="mr-1" /> Pets List</span>
+                    </li>
+                  </Link>
+                  <Link href="/dashboard/myrequests">
+                    <li>
+
+                      <span><FcApproval className="mr-1" /> Adoption Requests </span>
+                    </li>
+                  </Link>
+                </ul>
               </li>
-              <Link href="/dashboard/users">
-                <li className="font-medium ml-8 ">
+            </ul>
 
-                  <span><CgProfile className="mr-1" /> Users List</span>
-                </li>
-              </Link>
-              <Link href="/dashboard/pets">
-                <li className="font-medium ml-8 flex ">
+            <ul className="menu bg-base-200 w-56 rounded-box">
+              <li>
+                <h2 className="menu-title">MyPet Development</h2>
+                <ul>
+                  <Link target="_blank" href="https://helpdesk.mydevify.com/tickets/create_new">
+                    <li>
 
-                  <span><CgProfile className="mr-1" /> Pets List </span>
-                </li>
-              </Link>
+                      <span><FaBug className="mr-1" /> Bug Report</span>
+                    </li>
+                  </Link>
+                  <Link target="_blank" href="https://helpdesk.mydevify.com/tickets/create_new">
+                    <li>
 
-              <Link href="/dashboard/users/add">
-                <li className="font-medium ml-8 ">
-
-                  <span><CgProfile className="mr-1" /> Add User</span>
-                </li>
-              </Link>
-              <Link href="/dashboard/pets/add">
-                <li className="font-medium ml-8 flex ">
-
-                  <span><CgProfile className="mr-1" /> Add Pet </span>
-                </li>
-              </Link>
-
-              <Link href="/dashboard/managerequests">
-                <li className="font-medium ml-8 flex ">
-
-                  <span><CgProfile className="mr-1" /> Manage Requests </span>
-                </li>
-              </Link>
-
-            </div>
-
-
-
-            <div className="contents w-10 mb-3 avatar">
-              <li className="font-bold uppercase flex">
-
-                <span>MyPet Development</span>
+                      <span><FcIdea className="mr-1" /> Suggest</span>
+                    </li>
+                  </Link>
+                </ul>
               </li>
-              <Link target="_blank" href="https://helpdesk.mydevify.com/tickets/create_new">
-                <li className="font-medium ml-8 ">
-
-                  <span><CgProfile className="mr-1" /> Bug Report</span>
-                </li>
-              </Link>
-              <Link target="_blank" href="https://helpdesk.mydevify.com/tickets/create_new">
-                <li className="font-medium ml-8 flex ">
-
-                  <span><CgProfile className="mr-1" /> Suggest</span>
-                </li>
-              </Link>
-
-            </div>
-
-
-
-
-
-
+            </ul>
 
             <form
               action={async () => {
@@ -187,7 +187,7 @@ const Sidebar = async () => {
                 await signOut();
               }}
             >
-              <button>logouttt</button>
+              <button className="ml-8 mt-4 btn btn-primary">Logout</button>
             </form>
           </div>
         </div>
