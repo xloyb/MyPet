@@ -47,6 +47,10 @@ const Sidebar = async () => {
                 {user.isAdmin && (
                   <span className="text-xs text-gray-500 ml-1">(Admin)</span>
                 )}
+                {!user.isAdmin && user.isTeam && (
+                  <span className="text-xs text-gray-500 ml-1">(Moderator)</span>
+                )}
+
               </div>
               <div className="flex flex-col">
                 <div className="text-xs text-gray-500 ml-1">{user.phone}</div>
@@ -62,61 +66,91 @@ const Sidebar = async () => {
       </ul> */}
 
           <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-            <div className="collapse collapse-plus border border-base-300">
-              <input type="checkbox" className="peer" />
+            {user.isAdmin && (
+              <div>
+                <div className="collapse collapse-plus border border-base-300">
+                  <input type="checkbox" className="peer" />
 
-              <div className="collapse-title flex items-center">
-                {" "}
+                  <div className="collapse-title flex items-center">
+                    {" "}
 
-               <MdAdminPanelSettings className="text-2xl mr-1"/> Admin Controle Panel
+                    <MdAdminPanelSettings className="text-2xl mr-1" /> Admin Controle Panel
+                  </div>
+                  <div className="collapse-content">
+                    <ul>
+
+
+                      <Link href="/dashboard/users">
+                        <li className="font-medium ml-8 ">
+
+                          <span><FaThList className="mr-1" /> Users List</span>
+                        </li>
+                      </Link>
+
+
+                      <Link href="/dashboard/users/add">
+                        <li className="font-medium ml-8 ">
+
+                          <span><IoMdPersonAdd className="mr-1" /> Add User</span>
+                        </li>
+                      </Link>
+
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <div className="collapse-content">
-                <ul>
+            )}
+
+            {user.isTeam && (
+              <div className="collapse collapse-plus border border-base-300">
+                <input type="checkbox" className="peer" />
+
+                <div className="collapse-title flex items-center">
+                  {" "}
+
+                  <MdAdminPanelSettings className="text-2xl mr-1" /> Moderator Controle Panel
+                </div>
+                <div className="collapse-content">
+                  <ul>
 
 
-                  <Link href="/dashboard/users">
-                    <li className="font-medium ml-8 ">
 
-                      <span><FaThList className="mr-1" /> Users List</span>
-                    </li>
-                  </Link>
-                  <Link href="/dashboard/pets">
-                    <li className="font-medium ml-8 flex ">
+                    <Link href="/dashboard/pets">
+                      <li className="font-medium ml-8 flex ">
 
-                      <span><FaThList className="mr-1" /> Pets List </span>
-                    </li>
-                  </Link>
-
-                  <Link href="/dashboard/users/add">
-                    <li className="font-medium ml-8 ">
-
-                      <span><IoMdPersonAdd className="mr-1" /> Add User</span>
-                    </li>
-                  </Link>
-                  <Link href="/dashboard/pets/add">
-                    <li className="font-medium ml-8 flex ">
-
-                      <span><IoIosAddCircle className="mr-1" /> Add Pet </span>
-                    </li>
-                  </Link>
-
-                  <Link href="/dashboard/managerequests">
-                    <li className="font-medium ml-8 flex ">
-
-                      <span><CgProfile className="mr-1" /> Manage Requests </span>
-                    </li>
-                  </Link>
+                        <span><FaThList className="mr-1" /> Pets List </span>
+                      </li>
+                    </Link>
 
 
-                </ul>
+                    <Link href="/dashboard/pets/add">
+                      <li className="font-medium ml-8 flex ">
+
+                        <span><IoIosAddCircle className="mr-1" /> Add Pet </span>
+                      </li>
+                    </Link>
+
+                    <Link href="/dashboard/managerequests">
+                      <li className="font-medium ml-8 flex ">
+
+                        <span><CgProfile className="mr-1" /> Manage Requests </span>
+                      </li>
+                    </Link>
+
+
+                  </ul>
+                </div>
               </div>
-            </div>
+            )}
+
+
+
 
             <ul className="menu bg-base-200 w-56 rounded-box">
               <li>
                 <h2 className="menu-title">Profile</h2>
                 <ul>
-                  <Link href="/dashboard/users">
+                  <Link href="/dashboard/profile">
                     <li>
                       <span>
                         <CgProfile className="mr-1" />
@@ -125,7 +159,7 @@ const Sidebar = async () => {
                     </li>
                   </Link>
 
-                  <Link href="/dashboard/users">
+                  <Link href="/dashboard/settings">
                     <li>
                       <span>
                         <IoSettings className="mr-1" />

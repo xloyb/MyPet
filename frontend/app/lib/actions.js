@@ -6,6 +6,7 @@ import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
 import { auth, signIn } from "../../auth"
+import { fetchUserByEmail, fetchUserByUsername } from "./data";
 
 
 
@@ -222,6 +223,46 @@ export const UpdateUser = async (formData) => {
 
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
+};
+
+
+export const UpdateSettings = async (formData) => {
+  const { id, username, email, password, phone, address } =
+    Object.fromEntries(formData);
+
+    const CheckUsername = await fetchUserByUsername(username)
+    if (CheckUsername) throw new Error("User Name Exists");
+    const CheckEmail = await fetchUserByEmail(email);
+    if (CheckEmail) throw new Error( "Email Is Taken" )
+  try {
+    connectToDB();
+    
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const UpdatedFields = {
+      username,
+      email,
+      password:hashedPassword,
+      phone,
+      address,
+      isAdmin,
+      isTeam,
+    };
+
+    Object.keys(UpdatedFields).forEach(
+      (key) =>
+        (UpdatedFields[key] === "" || undefined) && delete UpdatedFields[key]
+    );
+
+    await User.findByIdAndUpdate(id, UpdatedFields);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to update My Settings");
+  }
+
+  revalidatePath("/dashboard/profile");
+  redirect("/dashboard/profile");
 };
 
 

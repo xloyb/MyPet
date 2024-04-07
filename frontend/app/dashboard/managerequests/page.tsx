@@ -2,8 +2,18 @@ import { fetchAllRequests, fetchPet, fetchUser } from "@/app/lib/data";
 import React from "react";
 import styles from "@/app/dashboard/dashboard.module.css";
 import { ManageRequest } from "@/app/lib/actions";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 const ManageRequests = async () => {
+
+  const {user} = await auth();
+  if(!user.isAdmin && !user.isTeam){
+    redirect("/dashboard/403")
+  }
+
+
+
   const allrequests = await fetchAllRequests();
    //console.log(allrequests);
   return (

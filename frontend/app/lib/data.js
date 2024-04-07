@@ -87,3 +87,26 @@ export const fetchUser = async (id) => {
   }
 };
 
+
+export const fetchUserByEmail = async (email) => {
+  try {
+    connectToDB();
+    const user = await User.findOne({ email });
+    return user;
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to fetch user by email!");
+  }
+};
+
+export const fetchUserByUsername = async (username) => {
+  try {
+    connectToDB();
+    const user = await User.findOne({ username });
+    return user;
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to fetch user by username!");
+  }
+};
+
