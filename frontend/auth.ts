@@ -13,7 +13,7 @@ interface CustomUser {
   email: string;
   img?: string;
   isAdmin: boolean;
-  isActive: boolean;
+  isTeam: boolean;
   phone?: string;
   address?: string;
 }
@@ -59,7 +59,7 @@ export const { auth, signIn, signOut } = NextAuth({
         token.email = customUser.email;
         token.img = customUser.img || '';
         token.isAdmin = customUser.isAdmin;
-        token.isActive = customUser.isActive;
+        token.isTeam = customUser.isTeam;
         token.phone = customUser.phone || '';
         token.address = customUser.address || '';
       }
@@ -72,7 +72,7 @@ export const { auth, signIn, signOut } = NextAuth({
         session.user.email = token.email;
         session.user.img = token.img || '';
         session.user.isAdmin = token.isAdmin;
-        session.user.isActive = token.isActive;
+        session.user.isTeam = token.isTeam;
         session.user.phone = token.phone || '';
         session.user.address = token.address || '';
       }

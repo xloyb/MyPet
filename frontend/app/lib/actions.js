@@ -72,7 +72,7 @@ export const CreateResquest = async(formData)=>{
 
 
 export const addUser = async (formData) => {
-  const { username, email, password, phone, address, isAdmin, isActive } =
+  const { username, email, password, phone, address, isAdmin, isTeam } =
     Object.fromEntries(formData);
 
   try {
@@ -87,7 +87,7 @@ export const addUser = async (formData) => {
       phone,
       address,
       isAdmin,
-      isActive,
+      isTeam,
     });
 
     await newUser.save();
@@ -187,7 +187,7 @@ export const UpdatePet = async (formData) => {
 };
 
 export const UpdateUser = async (formData) => {
-  const { id, username, email, password, phone, address, isAdmin, isActive } =
+  const { id, username, email, password, phone, address, isAdmin, isTeam } =
     Object.fromEntries(formData);
 
   try {
@@ -202,7 +202,7 @@ export const UpdateUser = async (formData) => {
       phone,
       address,
       isAdmin,
-      isActive,
+      isTeam,
     };
 
     Object.keys(UpdatedFields).forEach(
@@ -227,10 +227,9 @@ export const authenticate = async (formData) => {
     // const { username, password } = Object.fromEntries(
     //   Object.entries(formData).filter(([key, value]) => typeof key === 'string')
     // );
-
     const { username, password } = Object.fromEntries(formData);
-    console.log("-----------------------------------");
-    console.log(username + ", " + password);
+    // console.log("-----------------------------------");
+    // console.log(username + ", " + password);
 
     await signIn('credentials', { username, password });
   } catch (err) {
