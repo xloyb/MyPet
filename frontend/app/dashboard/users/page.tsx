@@ -5,8 +5,15 @@ import Link from 'next/link'
 import Pagination from '@/app/ui/dashboard/pagination/pagination';
 import {fetchUsers} from '@/app/lib/data'
 import { deletUser } from '@/app/lib/actions';
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 const UsersPage = async ({searchParams}) => {
+
+const { user } = await auth();
+if(!user.isAdmin){
+redirect("/dashboard/403")
+}
 
   const q = searchParams?.q || "";
   const users =  await fetchUsers(q);

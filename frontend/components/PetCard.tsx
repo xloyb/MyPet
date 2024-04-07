@@ -5,11 +5,11 @@ interface PetCardProps {
   title: string;
   imageUrl: string;
   description: string;
-  pid:String;
+  pid?:String;
   uid?:String;
 }
 
-const PetCard: React.FC<PetCardProps> = ({ title, imageUrl, description ,pid,uid}) => {
+const PetCard: React.FC<PetCardProps> = ({ title, imageUrl, description ,pid, uid}) => {
   return (
     <div key={pid} className="mt-6 card card-compact w-80 bg-base-100 shadow-xl">
       <figure><img src={imageUrl} alt={title} /></figure>

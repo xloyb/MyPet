@@ -1,8 +1,16 @@
 import React from 'react'
 import styles from '../../dashboard.module.css';
 import { addPet } from '@/app/lib/actions';
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
-const Page = () => {
+const Page = async () => {
+    
+    const {user} = await auth();
+    if(!user.isAdmin && !user.isTeam){
+      redirect("/dashboard/403")
+    }
+
     return (
         <div className={styles.home_container}>
             <div className="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">

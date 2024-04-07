@@ -2,9 +2,17 @@ import React from 'react'
 import styles from '@/app/dashboard/dashboard.module.css'
 import { UpdatePet } from '@/app/lib/actions';
 import { fetchPet } from '@/app/lib/data';
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
 const SinglePetUpdate = async ({params}) => {
+    const {user} = await auth();
+    if(!user.isAdmin && !user.isTeam){
+      redirect("/dashboard/403")
+    }
 
+
+  console.log(user.isAdmin)
     const {id} = await params;
     const pet = await fetchPet(id);
     

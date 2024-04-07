@@ -5,8 +5,17 @@ import Link from 'next/link'
 import Pagination from '@/app/ui/dashboard/pagination/pagination';
 import { fetchPets } from '@/app/lib/data'
 import { deletPet } from '@/app/lib/actions';
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
 const PetsPage = async ({ searchParams }) => {
+ 
+  const {user} = await auth();
+  if(!user.isAdmin && !user.isTeam){
+    redirect("/dashboard/403")
+  }
+  
+
   const q = searchParams?.q || "";
   const pets = await fetchPets(q);
   return (

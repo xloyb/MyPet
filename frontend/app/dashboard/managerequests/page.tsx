@@ -5,7 +5,7 @@ import { ManageRequest } from "@/app/lib/actions";
 
 const ManageRequests = async () => {
   const allrequests = await fetchAllRequests();
-  console.log(allrequests);
+   //console.log(allrequests);
   return (
     <div>
       <div className={styles.home_container}>
@@ -17,8 +17,8 @@ const ManageRequests = async () => {
           const user = await fetchUser(ar.user.toString());
           const pet = await fetchPet(ar.pet.toString());
           //  console.log("testing pet id")
-          //  console.log(ar.pet.toString())
-          //  console.log(pet)
+            console.log(ar.pet.toString())
+            console.log(pet)
 
           return (
             <div className="pt-10">

@@ -5,7 +5,7 @@ import { AdoptionRequest, Pet, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
-import { signIn } from "../../auth"
+import { auth, signIn } from "../../auth"
 
 
 
@@ -129,8 +129,12 @@ export const addPet = async (formData) => {
 
 export const deletPet = async (formData) => {
   const { id } = Object.fromEntries(formData);
-
+ 
+  
+  
   try {
+    
+    
     connectToDB();
 
     await Pet.findByIdAndDelete(id);
