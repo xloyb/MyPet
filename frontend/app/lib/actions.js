@@ -191,7 +191,47 @@ export const UpdatePet = async (formData) => {
   redirect("/dashboard/pets");
 };
 
+
 export const UpdateUser = async (formData) => {
+  const { id, username, email, password, phone, address, isAdmin, isTeam } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    const UpdatedFields = {
+      username,
+      email,
+      phone,
+      address,
+      isAdmin,
+      isTeam,
+    };
+
+    
+    if (password) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      UpdatedFields.password = hashedPassword;
+    }
+
+    Object.keys(UpdatedFields).forEach(
+      (key) =>
+        (UpdatedFields[key] === "" || UpdatedFields[key] === undefined) && delete UpdatedFields[key]
+    );
+
+    await User.findByIdAndUpdate(id, UpdatedFields);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to update User!");
+  }
+
+  revalidatePath("/dashboard/users");
+  redirect("/dashboard/users");
+};
+
+
+export const UpdateUser_OLD = async (formData) => {
   const { id, username, email, password, phone, address, isAdmin, isTeam } =
     Object.fromEntries(formData);
 
@@ -226,7 +266,7 @@ export const UpdateUser = async (formData) => {
 };
 
 
-export const UpdateSettings = async (formData) => {
+export const UpdateSettings_old = async (formData) => {
   const { id, username, email, password, phone, address } =
     Object.fromEntries(formData);
 
@@ -253,6 +293,58 @@ export const UpdateSettings = async (formData) => {
     Object.keys(UpdatedFields).forEach(
       (key) =>
         (UpdatedFields[key] === "" || undefined) && delete UpdatedFields[key]
+    );
+
+    await User.findByIdAndUpdate(id, UpdatedFields);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to update My Settings");
+  }
+
+  revalidatePath("/dashboard/profile");
+  redirect("/dashboard/profile");
+};
+
+
+export const UpdateSettings = async (formData) => {
+  const { id, username, email, password, phone, address } =
+    Object.fromEntries(formData);
+
+  // Check if the password field is not empty
+  const shouldUpdatePassword = password !== "";
+
+  // Check if the password meets the minimum length requirement
+  if (shouldUpdatePassword && password.length < 6) {
+    throw new Error("Password must be at least 6 characters long");
+  }
+
+  const CheckUsername = await fetchUserByUsername(username);
+  if (CheckUsername) throw new Error("User Name Exists");
+
+  const CheckEmail = await fetchUserByEmail(email);
+  if (CheckEmail) throw new Error("Email Is Taken");
+
+  try {
+    connectToDB();
+
+    const UpdatedFields = {
+      username,
+      email,
+      phone,
+      address,
+    };
+
+    // If the password is provided, hash it and include it in the update
+    if (shouldUpdatePassword) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      UpdatedFields.password = hashedPassword;
+    }
+
+    Object.keys(UpdatedFields).forEach(
+      (key) =>
+        (UpdatedFields[key] === "" || UpdatedFields[key] === undefined) &&
+        delete UpdatedFields[key]
     );
 
     await User.findByIdAndUpdate(id, UpdatedFields);

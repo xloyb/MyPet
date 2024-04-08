@@ -125,15 +125,23 @@ const MyProfile = async () => {
 
 
           <div className="stats shadow flex flex-wrap">
+
+          <div className="stat w-full sm:w-1/2 md:w-1/4">
+              <div className="stat-title">Admin</div>
+              <div className="stat-value text-primary">{user.isAdmin ? 'Yes' : 'No'}</div>
+            </div>
+
+            <div className="stat w-full sm:w-1/2 md:w-1/4">
+              <div className="stat-title">Moderator</div>
+              <div className="stat-value text-primary">{user.isTeam ? 'Yes' : 'No'}</div>
+            </div>
+
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">UserName</div>
               <div className="stat-value">{user.username}</div>
             </div>
 
-            <div className="stat w-full sm:w-1/2 md:w-1/4">
-              <div className="stat-title">Email</div>
-              <div className="stat-value">{user.email}</div>
-            </div>
+            
 
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">Phone</div>
@@ -144,16 +152,11 @@ const MyProfile = async () => {
               <div className="stat-title">Address</div>
               <div className="stat-value">{user.address}</div>
             </div>
-
             <div className="stat w-full sm:w-1/2 md:w-1/4">
-              <div className="stat-title">Admin</div>
-              <div className="stat-value text-primary">{user.isAdmin ? 'Yes' : 'No'}</div>
+              <div className="stat-title">Email</div>
+              <div className="stat-value">{user.email}</div>
             </div>
-
-            <div className="stat w-full sm:w-1/2 md:w-1/4">
-              <div className="stat-title">Moderator</div>
-              <div className="stat-value text-primary">{user.isTeam ? 'Yes' : 'No'}</div>
-            </div>
+            
           </div>
 
         </div>

@@ -1,10 +1,10 @@
 import React from 'react'
 import { MdAdminPanelSettings } from "react-icons/md";
-
+import styles from '@/app/dashboard/dashboard.module.css'
 
 const Forbidden = () => {
   return (
-    <div>
+    <div className={styles.home_container}>
       <div className="hero min-h-screen bg-base-200">
   <div className="hero-content">
   
