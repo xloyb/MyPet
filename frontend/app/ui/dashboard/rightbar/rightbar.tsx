@@ -1,12 +1,56 @@
-import React from 'react';
-import { MdPlayCircleFilled, MdReadMore } from 'react-icons/md';
-import Image from 'next/image';
-import puppy from '../../../../public/images/puppy.png';
+import React from "react";
+import { MdPlayCircleFilled, MdReadMore } from "react-icons/md";
+import Image from "next/image";
+import puppy from "../../../../public/images/puppy.png";
+import { fetchAllAnnouncements } from "@/app/lib/data";
 
-const Rightbar = () => {
+const Rightbar = async () => {
+  const announcement = await fetchAllAnnouncements();
+
   return (
-    <div className="fixed">
-      <div className="bg-gradient-to-t from-blue-900 to-blue-800 p-6 rounded-lg mb-6 relative">
+    <div className="">
+      {/* <div className="fixed"></div> */}
+
+      {announcement &&
+        announcement.map((ann) => (
+          <div
+            className="bg-gradient-to-t from-blue-900 to-blue-800 p-6 rounded-lg mb-6 relative"
+            key={ann.id}
+          >
+            <div className="absolute bottom-0 right-0 w-1/2 h-1/2">
+              <Image
+                src={puppy}
+                alt="xLoy"
+                fill
+                className="object-contain opacity-20"
+              />
+            </div>
+            <div className="text-white">
+              <span className="font-bold">MyPet Announcement</span>
+              <h3 className="text-lg font-semibold mt-2">
+                {/* Display announcement title here */}
+              </h3>
+              <span className="text-sm font-semibold mt-1"></span>
+              <p className="text-sm mt-2">
+                {/* Display announcement content here */}
+                {ann.message}
+              </p>
+
+              {ann.button && (
+                <a
+                  href={ann.buttonLink}
+                  target="_blank"
+                  className="bg-blue-600 text-white rounded-md py-2 px-4 flex items-center mt-3"
+                >
+                  <MdReadMore className="mr-2" />
+                  Learn
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+
+      {/* <div className="bg-gradient-to-t from-blue-900 to-blue-800 p-6 rounded-lg mb-6 relative">
         <div className="absolute bottom-0 right-0 w-1/2 h-1/2">
           <Image src={puppy} alt="xLoy" fill className="object-contain opacity-20" />
         </div>
@@ -21,12 +65,12 @@ const Rightbar = () => {
             perspiciatis recusandae possimus.
           </p>
           <button className="bg-blue-600 text-white rounded-md py-2 px-4 flex items-center mt-3">
-            <MdPlayCircleFilled className="mr-2" />
-            Watch
+            <MdReadMore className="mr-2" />
+            Learn
           </button>
         </div>
-      </div>
-      <div className="bg-gradient-to-t from-blue-900 to-blue-800 p-6 rounded-lg mb-6 text-white">
+      </div> */}
+      {/* <div className="bg-gradient-to-t from-blue-900 to-blue-800 p-6 rounded-lg mb-6 text-white">
         <div className="text">
           <span className="font-bold">🚀 Coming Soon</span>
           <h3 className="text-lg font-semibold mt-2">
@@ -42,7 +86,7 @@ const Rightbar = () => {
             Learn
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

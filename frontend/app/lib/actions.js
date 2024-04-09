@@ -1,76 +1,66 @@
-
 "use server";
 import { revalidatePath } from "next/cache";
-import { AdoptionRequest, Pet, User } from "./models";
+import { AdoptionRequest, Pet, Settings, User } from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
-import { auth, signIn } from "../../auth"
+import { auth, signIn } from "../../auth";
 import { fetchUserByEmail, fetchUserByUsername } from "./data";
 
-
-
-export const ManageRequest = async(formData)=>{
-  const {id, status} = Object.fromEntries(formData);
+export const ManageRequest = async (formData) => {
+  const { id, status } = Object.fromEntries(formData);
 
   //const rp = await AdoptionRequest.find( { _id: rui } );
-  console.log("ayway",id,status)
+  console.log("ayway", id, status);
   try {
-    connectToDB()
-    await AdoptionRequest.findByIdAndUpdate( id ,{ status : status });
-    
+    connectToDB();
+    await AdoptionRequest.findByIdAndUpdate(id, { status: status });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     throw new Error("Failed to update request");
-    
   }
 
   revalidatePath("/dashboard/managerequests");
   redirect("/dashboard/managerequests");
+};
 
-}
-
-
-export const DeleteMyRequest = async(formData)=>{
-  const {id,suid,uid} = Object.fromEntries(formData);
-// console.log(suid,"====",uid)
+export const DeleteMyRequest = async (formData) => {
+  const { id, suid, uid } = Object.fromEntries(formData);
+  // console.log(suid,"====",uid)
   try {
     connectToDB();
-    if(suid === uid){
- await  AdoptionRequest.deleteOne({_id: id});
-    }else{
+    if (suid === uid) {
+      await AdoptionRequest.deleteOne({ _id: id });
+    } else {
       throw new Error("You cannot delete others requests");
-
     }
-    
   } catch (err) {
     console.log(err);
-      throw new Error("Failed to delete Request!");
-    
+    throw new Error("Failed to delete Request!");
   }
   revalidatePath("/dashboard/myrequests");
   redirect("/dashboard/myrequests");
-}
+};
 
-
-
-
-export const CreateResquest = async(formData)=>{
-  const { pid, uid,message } = Object.fromEntries(formData);
-  try{
-  connectToDB()
-  const newRequest = new AdoptionRequest({pet: pid ,user : uid, message: message, status:"pending"});
-  await newRequest.save();
-  
-  }  catch (err) {
-      console.log(err);
-      throw new Error("Failed to Create Request!");
-    }
-  
-    revalidatePath("/dashboard/myrequests");
-    redirect("/dashboard/myrequests");
+export const CreateResquest = async (formData) => {
+  const { pid, uid, message } = Object.fromEntries(formData);
+  try {
+    connectToDB();
+    const newRequest = new AdoptionRequest({
+      pet: pid,
+      user: uid,
+      message: message,
+      status: "pending",
+    });
+    await newRequest.save();
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to Create Request!");
   }
 
+  revalidatePath("/dashboard/myrequests");
+  redirect("/dashboard/myrequests");
+};
 
 export const addUser = async (formData) => {
   const { username, email, password, phone, address, isAdmin, isTeam } =
@@ -101,6 +91,82 @@ export const addUser = async (formData) => {
   redirect("/dashboard/users");
 };
 
+export const addAnnouncement = async (formData) => {
+  const { announcement, buttonLink } = Object.fromEntries(formData);
+
+  console.log("find me xLoy");
+  console.log(announcement + " " + buttonLink);
+
+  try {
+    connectToDB();
+
+    if (buttonLink !== "" && buttonLink !== null) {
+      const newAnnouncement = new Settings({
+        type: "announcement",
+        message: announcement,
+        button: true, // Set button to true when buttonLink is provided
+        buttonLink: buttonLink,
+      });
+      await newAnnouncement.save();
+    } else {
+      const newAnnouncement = new Settings({
+        type: "announcement",
+        message: announcement,
+      });
+      await newAnnouncement.save();
+    }
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to create new Announcement!");
+  }
+
+  revalidatePath("/dashboard/modcp");
+  redirect("/dashboard/modcp");
+};
+
+export const deleteAnnouncements = async () => {
+  try {
+    await connectToDB();
+    const result = await Settings.deleteMany({ type: "announcement" });
+    revalidatePath("/dashboard/modcp");
+    // redirect("/dashboard/modcp");
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to delete Announcements!");
+  }
+};
+
+export const deleteNotification = async () => {
+  try {
+    await connectToDB();
+    const result = await Settings.deleteMany({ type: "notification" });
+    revalidatePath("/dashboard/modcp");
+    //redirect("/dashboard/modcp");
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to delete notifications!");
+  }
+};
+
+export const addNotification = async (formData) => {
+  const { notification } = Object.fromEntries(formData);
+  try {
+    connectToDB();
+    const newNotification = new Settings({
+      type: "notification",
+      message: notification,
+    });
+    await Settings.deleteMany({ type: "notification" });
+    await newNotification.save();
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to create new notofication!");
+  }
+
+  revalidatePath("/dashboard/modcp");
+  redirect("/dashboard/modcp");
+};
+
 export const addPet = async (formData) => {
   const { breed, name, desc, price, stock, img, age } =
     Object.fromEntries(formData);
@@ -128,14 +194,23 @@ export const addPet = async (formData) => {
   redirect("/dashboard/pets");
 };
 
+export const deletAnnouncement = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    await Settings.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete Announcement!");
+  }
+  revalidatePath("/dashboard/pets");
+};
+
 export const deletPet = async (formData) => {
   const { id } = Object.fromEntries(formData);
- 
-  
-  
+
   try {
-    
-    
     connectToDB();
 
     await Pet.findByIdAndDelete(id);
@@ -191,7 +266,6 @@ export const UpdatePet = async (formData) => {
   redirect("/dashboard/pets");
 };
 
-
 export const UpdateUser = async (formData) => {
   const { id, username, email, password, phone, address, isAdmin, isTeam } =
     Object.fromEntries(formData);
@@ -208,7 +282,6 @@ export const UpdateUser = async (formData) => {
       isTeam,
     };
 
-    
     if (password) {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
@@ -217,7 +290,8 @@ export const UpdateUser = async (formData) => {
 
     Object.keys(UpdatedFields).forEach(
       (key) =>
-        (UpdatedFields[key] === "" || UpdatedFields[key] === undefined) && delete UpdatedFields[key]
+        (UpdatedFields[key] === "" || UpdatedFields[key] === undefined) &&
+        delete UpdatedFields[key]
     );
 
     await User.findByIdAndUpdate(id, UpdatedFields);
@@ -229,7 +303,6 @@ export const UpdateUser = async (formData) => {
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
 };
-
 
 export const UpdateUser_OLD = async (formData) => {
   const { id, username, email, password, phone, address, isAdmin, isTeam } =
@@ -243,7 +316,7 @@ export const UpdateUser_OLD = async (formData) => {
     const UpdatedFields = {
       username,
       email,
-      password:hashedPassword,
+      password: hashedPassword,
       phone,
       address,
       isAdmin,
@@ -265,25 +338,23 @@ export const UpdateUser_OLD = async (formData) => {
   redirect("/dashboard/users");
 };
 
-
 export const UpdateSettings_old = async (formData) => {
   const { id, username, email, password, phone, address } =
     Object.fromEntries(formData);
 
-    const CheckUsername = await fetchUserByUsername(username)
-    if (CheckUsername) throw new Error("User Name Exists");
-    const CheckEmail = await fetchUserByEmail(email);
-    if (CheckEmail) throw new Error( "Email Is Taken" )
+  const CheckUsername = await fetchUserByUsername(username);
+  if (CheckUsername) throw new Error("User Name Exists");
+  const CheckEmail = await fetchUserByEmail(email);
+  if (CheckEmail) throw new Error("Email Is Taken");
   try {
     connectToDB();
-    
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const UpdatedFields = {
       username,
       email,
-      password:hashedPassword,
+      password: hashedPassword,
       phone,
       address,
       isAdmin,
@@ -304,7 +375,6 @@ export const UpdateSettings_old = async (formData) => {
   revalidatePath("/dashboard/profile");
   redirect("/dashboard/profile");
 };
-
 
 export const UpdateSettings = async (formData) => {
   const { id, username, email, password, phone, address } =
@@ -357,8 +427,6 @@ export const UpdateSettings = async (formData) => {
   redirect("/dashboard/profile");
 };
 
-
-
 export const authenticate = async (formData) => {
   try {
     // const { username, password } = Object.fromEntries(
@@ -368,10 +436,9 @@ export const authenticate = async (formData) => {
     // console.log("-----------------------------------");
     // console.log(username + ", " + password);
 
-    await signIn('credentials', { username, password });
+    await signIn("credentials", { username, password });
   } catch (err) {
     console.log(err);
     throw err;
-  } 
+  }
 };
-

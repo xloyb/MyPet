@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/authconfig.js", "app/ui/login/loginForm/loginForm.jsx", "app/login/page.jsx", "app/ui/dashboard/sidebar/sidebar.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/authconfig.js", "app/ui/login/loginForm/loginForm.jsx", "app/login/page.jsx", "app/ui/dashboard/sidebar/sidebar.tsx", "app/dashboard/modcp/page.tsx"],
   "exclude": ["node_modules"]
 }

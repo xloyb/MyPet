@@ -100,7 +100,28 @@ const adoptionRequestSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const AdoptionRequest = mongoose.models.AdoptionRequest || mongoose.model("AdoptionRequest", adoptionRequestSchema);
+const siteSettingsSchema = new mongoose.Schema({
+  type: {
+      type: String,
+      enum: ['announcement', 'notification'],
+      required: true
+  },
+  message: {
+      type: String,
+      required: true
+  },
+  button: {
+      type: Boolean,
+      default: false
+  },
+  buttonLink: {
+      type: String
+  }
+},
+{ timestamps: true }
+);
 
+export const AdoptionRequest = mongoose.models.AdoptionRequest || mongoose.model("AdoptionRequest", adoptionRequestSchema);
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
 export const Pet = mongoose.models.Pet || mongoose.model("Pet", petSchema);
+export const Settings = mongoose.models.Settings || mongoose.model("Settings", siteSettingsSchema);

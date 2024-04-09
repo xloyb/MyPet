@@ -1,9 +1,6 @@
-import { AdoptionRequest, Pet, User } from "./models";
+import { AdoptionRequest, Pet, Settings, User } from "./models";
 import { connectToDB } from "./utils";
-import { Types } from 'mongoose';
-
-
-
+import { Types } from "mongoose";
 
 export const fetchAllRequests = async () => {
   try {
@@ -16,14 +13,15 @@ export const fetchAllRequests = async () => {
   }
 };
 
-
 export const fetchUserRequests = async (uid) => {
   //console.log("User ID:", uid);
   try {
     connectToDB();
     //const requests = await AdoptionRequest.findById('660367f324ad8217be668004')
     //const requests = await AdoptionRequest.find({ user: Types.ObjectId(uid) });
-    const requests = await AdoptionRequest.find({ user: new Types.ObjectId(uid) });
+    const requests = await AdoptionRequest.find({
+      user: new Types.ObjectId(uid),
+    });
     //console.log("testststst",requests)
     return requests;
   } catch (err) {
@@ -32,10 +30,27 @@ export const fetchUserRequests = async (uid) => {
   }
 };
 
+export const fetchAllAnnouncements = async () => {
+  try {
+    connectToDB();
+    const ann = await Settings.find({ type: "announcement" });
+    return ann;
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to fetch the announcements!");
+  }
+};
 
-
-
-
+export const fetchNotif = async () => {
+  try {
+    connectToDB();
+    const notif = await Settings.findOne({ type: "notification" });
+    return notif;
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to fetch a notification!");
+  }
+};
 
 export const fetchUsers = async (q) => {
   const regex = new RegExp(q, "i");
@@ -87,11 +102,10 @@ export const fetchUser = async (id) => {
   }
 };
 
-
 export const fetchUserByEmail = async (email) => {
   try {
     connectToDB();
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: email });
     return user;
   } catch (err) {
     console.error(err);
@@ -102,11 +116,10 @@ export const fetchUserByEmail = async (email) => {
 export const fetchUserByUsername = async (username) => {
   try {
     connectToDB();
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ username: username });
     return user;
   } catch (err) {
     console.error(err);
     throw new Error("Failed to fetch user by username!");
   }
 };
-
