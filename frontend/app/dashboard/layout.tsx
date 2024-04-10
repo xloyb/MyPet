@@ -4,6 +4,7 @@ import Dnavbar from '../ui/dashboard/d-navbar/dnavbar';
 import styles from './dashboard.module.css'
 import Footer from '../ui/dashboard/footer/footer';
 import Notification from '../ui/dashboard/notification/notification';
+import Mobile_Sidebar from '../ui/dashboard/sidebar/mobile_sidebar';
 
 interface LayoutProps {
   children: ReactNode;
@@ -19,7 +20,8 @@ const Layout = ({ children }: LayoutProps) => {
         <Dnavbar />
         <Notification/>
         {children}
-        <Footer/>
+        {/* <Footer/> */}
+      <Mobile_Sidebar/>
       </div>
     </div>
   );

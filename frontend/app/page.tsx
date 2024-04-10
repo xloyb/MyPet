@@ -1,15 +1,13 @@
 import Image from "next/image";
-
 import { CustomFilter, Hero, SearchBar } from "@/components";
-import { FetchAllPets } from '@/utils'
 import PetCard from "@/components/PetCard";
+import { fetchPets } from "./lib/data";
 
 export default async function Home() {
-  const allPets = await FetchAllPets();
 
-  const isDataEmpty = !Array.isArray(allPets) || allPets.length < 1 || !allPets;
+  const pets = await fetchPets();
 
-  // console.log(allPets);
+
 
   return (
     <main className="overflow-hidden">
@@ -23,17 +21,26 @@ export default async function Home() {
         </div>
 
         <div className='home__filters'>
-          <SearchBar />
+          {/* <SearchBar /> */}
 
-          <div className='home__filter-container'>
+          {/* <div className='home__filter-container'>
             <CustomFilter title="Breeds" />
             <CustomFilter title="Age" />
-          </div>
+          </div> */}
         </div>
         <div className="content-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+          {pets.map(pet => (
 
+            <PetCard
+              pid={pet._id}
+              title={pet.name}
+              imageUrl={pet.img || "/images/default-Pet.png"}
+              description={pet.desc}
+            />
 
-          <PetCard
+          ))}
+
+          {/* <PetCard
             title="Shoes!"
             imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
             description="If a dog chews shoes whose shoes does he choose?"
@@ -55,7 +62,7 @@ export default async function Home() {
             title="Shoes!"
             imageUrl="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
             description="If a dog chews shoes whose shoes does he choose?"
-          />
+          /> */}
         </div>
 
       </div>

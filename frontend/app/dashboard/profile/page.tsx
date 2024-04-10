@@ -128,33 +128,33 @@ const MyProfile = async () => {
 
           <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">Admin</div>
-              <div className="stat-value text-primary">{user.isAdmin ? 'Yes' : 'No'}</div>
+              <div className="stat-value text-primary text-base">{user.isAdmin ? 'Yes' : 'No'}</div>
             </div>
 
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">Moderator</div>
-              <div className="stat-value text-primary">{user.isTeam ? 'Yes' : 'No'}</div>
+              <div className="stat-value text-primary text-base">{user.isTeam ? 'Yes' : 'No'}</div>
             </div>
 
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">UserName</div>
-              <div className="stat-value">{user.username}</div>
+              <div className="stat-value text-base">{user.username}</div>
             </div>
 
             
 
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">Phone</div>
-              <div className="stat-value">{user.phone}</div>
+              <div className="stat-value text-base">{user.phone}</div>
             </div>
 
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">Address</div>
-              <div className="stat-value">{user.address}</div>
+              <div className="stat-value text-base">{user.address}</div>
             </div>
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">Email</div>
-              <div className="stat-value">{user.email}</div>
+              <div className="stat-value text-base">{user.email}</div>
             </div>
             
           </div>

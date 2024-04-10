@@ -13,10 +13,10 @@ const Sidebar = async () => {
   const { user } = await auth();
 
   return (
-    <div className="h-screen overflow-hidden sticky top-0 z-30 overflow-x-hidden">
+    <div className="h-screen overflow-hidden sticky top-0 z-30 overflow-x-hidden ">
       <div className="drawer lg:drawer-open h-full overflow-hidden	">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-center justify-center sm:hidden">
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
@@ -63,7 +63,7 @@ const Sidebar = async () => {
        
         <li><a>Sidebar Item 1</a></li>
         <li><a>Sidebar Item 2</a></li>
-      </ul> */}
+       </ul> */}
 
           <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
             {user.isAdmin && (
