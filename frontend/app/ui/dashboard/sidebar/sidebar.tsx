@@ -114,6 +114,11 @@ const Sidebar = async () => {
                   <ul>
 
 
+                  <Link href="/dashboard/modcp">
+                      <li className="font-medium ml-8 flex ">
+                        <span><MdAdminPanelSettings className="mr-1" /> Mods Controle Panel </span>
+                      </li>
+                    </Link>
 
                     <Link href="/dashboard/pets">
                       <li className="font-medium ml-8 flex ">
@@ -142,9 +147,6 @@ const Sidebar = async () => {
                 </div>
               </div>
             )}
-
-
-
 
             <ul className="menu bg-base-200 w-56 rounded-box">
               <li>

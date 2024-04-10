@@ -3,6 +3,7 @@
 import { authenticate } from '@/app/lib/actions'
 import React from 'react'
 import { useFormState } from "react-dom";
+import Link from 'next/link'
 
 const LoginForm = () => {
     // const [state, formAction] = useFormState(authenticate, undefined);
@@ -31,6 +32,13 @@ const LoginForm = () => {
                     </div>
                     
                 </form>
+                <div className="space-y-4">
+
+                <span>don't have an account ?</span>
+                <Link href="/register">
+            <button className="btn btn-neutral">Register</button>
+          </Link>
+                </div>
             </div>
         </div>
     </div>

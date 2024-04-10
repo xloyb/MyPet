@@ -427,6 +427,38 @@ export const UpdateSettings = async (formData) => {
   redirect("/dashboard/profile");
 };
 
+
+export const register = async (formData) => {
+  const { username,email,phone, password } = Object.fromEntries(formData);
+  const CheckUsername = await fetchUserByUsername(username);
+  if (CheckUsername) throw new Error("User Name Exists");
+  const CheckEmail = await fetchUserByEmail(email);
+  if (CheckEmail) throw new Error("Email Is Taken");
+  try {
+    connectToDB()
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    //console.log({username, email, phone});
+
+    const newUser = new User({
+      username: username,
+      email:email,
+      password: hashedPassword,
+      phone:phone,
+      isAdmin:false,
+      isTeam:false,
+    });
+    await newUser.save()
+
+
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+  redirect("/login");
+};
+
 export const authenticate = async (formData) => {
   try {
     // const { username, password } = Object.fromEntries(
