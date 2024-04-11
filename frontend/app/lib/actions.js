@@ -143,8 +143,18 @@ export const CreateResquest = async (formData) => {
 };
 
 export const addUser = async (formData) => {
-  const { username, email, password, phone, address, isAdmin, isTeam } =
+  const { username, email, password, phone, address, isAdmin, isTeam,file } =
     Object.fromEntries(formData);
+
+
+    let imageUrl = "";
+
+    if (file instanceof File && file.size > 0) {
+      imageUrl = await uploadImageToServer(file,file.name);
+      console.log(imageUrl)
+    }else{
+      console.log("image is empty")
+    }
 
   try {
     connectToDB();
@@ -159,6 +169,7 @@ export const addUser = async (formData) => {
       address,
       isAdmin,
       isTeam,
+      img:imageUrl || ""
     });
 
     await newUser.save();

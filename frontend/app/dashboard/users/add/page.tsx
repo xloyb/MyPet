@@ -21,14 +21,13 @@ if(!user.isAdmin){
                     <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
 
                         <img className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-                            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                            src="/images/Default.png"
                             alt="Bordered avatar" />
 
                         <div className="flex flex-col space-y-5 sm:ml-8">
-                            <button type="button"
-                                className="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
-                                Change picture
-                            </button>
+                           
+                            <input type="file" name="file" className="file-input w-full max-w-xs" accept="image/png, image/jpeg" />
+
                             <button type="button"
                                 className="py-3.5 px-7 text-base font-medium  focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
                                 Delete picture
@@ -100,17 +99,7 @@ if(!user.isAdmin){
                             </option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
-                        </select>
-
-                        <div className="mb-6">
-                            <label htmlFor="img"
-                                className="block mb-2 text-sm font-medium  dark:text-white">
-                                Image URL</label>
-                            <input type="text" id="img" name="img"
-                                className=" border border-indigo-300  text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
-                                placeholder="Image URL" />
-                        </div>
-
+                        </select>                  
                         <div className="flex justify-end">
                             <button type="submit"
                                 className="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Save</button>
