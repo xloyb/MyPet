@@ -41,14 +41,13 @@ redirect("/dashboard/403")
             </thead>
             <tbody>
              {users.map(user=>(
-
                <tr key={user.id}>
                 
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
-                        <img src={user.img || "/images/Default.png"} alt="Avatar" />
+                        <img src={user.img ? `/img/${user.img}` : "/images/Default.png"} alt="Avatar" />
                       </div>
                     </div>
                     <div>

@@ -301,21 +301,7 @@ const ProfilePage = async () => {
                     placeholder={fetchedUser.address}
                   />
                 </div>
-                <div className="mb-6">
-                  <label
-                    htmlFor="img"
-                    className="block mb-2 text-sm font-medium  dark:text-white"
-                  >
-                    Image URL
-                  </label>
-                  <input
-                    type="text"
-                    id="img"
-                    name="img"
-                    className=" border border-indigo-300  text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
-                    placeholder={fetchedUser.img}
-                  />
-                </div>
+               
                 <input type="hidden" name="id" value={fetchedUser.id} />
                 <div className="flex justify-end">
                   <button

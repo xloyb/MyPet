@@ -10,6 +10,7 @@ const MyProfile = async () => {
   const { user } = await auth();
 
 
+
   return (
     <div>
       <div>
@@ -24,9 +25,9 @@ const MyProfile = async () => {
             }}
           >
             <div className="flex items-center justify-center h-full p-4">
-              <img src={user.imgg ? `/img/${user.img}` : "/images/Default.png"}
+              <img src={user.img ? `/img/${user.img}` : "/images/Default.png"}
                 alt="Profile Picture"
-                className="w-20 h-20 rounded-full border-4 border-white bg-white"
+                className="w-40 h-40 rounded-full border-4 border-white bg-white"
               />
             </div>
           </div>

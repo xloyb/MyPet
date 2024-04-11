@@ -36,7 +36,7 @@ const Sidebar = async () => {
             <div className="avatar">
               <div className="w-24 rounded-full">
                 <img
-                  src={user.img || "/images/Default.png"}
+                  src={user.img ? `/img/${user.img}` : "/images/Default.png"}
                   alt="User Avatar"
                 />
               </div>
