@@ -259,8 +259,17 @@ export const addNotification = async (formData) => {
 };
 
 export const addPet = async (formData) => {
-  const { breed, name, desc, price, stock, img, age } =
+  const { breed, name, desc, price, stock, file, age } =
     Object.fromEntries(formData);
+
+    let imageUrl = "";
+
+    if (file instanceof File && file.size > 0) {
+      imageUrl = await uploadImageToServer(file,file.name);
+      console.log(imageUrl)
+    }else{
+      console.log("image is empty")
+    }
 
   try {
     connectToDB();
@@ -271,7 +280,7 @@ export const addPet = async (formData) => {
       desc,
       price,
       stock,
-      img,
+      img:imageUrl || "",
       age,
     });
 
