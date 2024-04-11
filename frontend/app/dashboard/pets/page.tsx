@@ -48,7 +48,7 @@ const PetsPage = async ({ searchParams }) => {
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img src={pet.img || "/images/Default.png"} alt="Avatar" />
+                          <img src={pet.img ? `/img/${pet.img}` : "/images/default-Pet.png"} alt="Avatar" />
                         </div>
                       </div>
                       <div>
