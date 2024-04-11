@@ -26,20 +26,19 @@ if(!user.isAdmin){
             <div className="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
                 <div className="p-2 md:p-4">
                     <div className="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
-                        <h2 className="pl-6 text-2xl font-bold sm:text-xl">Add fetchedUser</h2>
+                        <h2 className="pl-6 text-2xl font-bold sm:text-xl">Update User {fetchedUser.username} 's Account</h2>
 
                         <form action={UpdateUser} className="grid max-w-2xl mx-auto mt-8">
                             <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
 
                                 <img className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-                                    src={fetchedUser.img || "/images/Default.png"}
+                                    src={fetchedUser.img ? `/img/${fetchedUser.img}` : "/images/Default.png"}
                                     alt="Bordered avatar" />
 
                                 <div className="flex flex-col space-y-5 sm:ml-8">
-                                    <button type="button"
-                                        className="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
-                                        Change picture
-                                    </button>
+                                   
+                                     <input type="file" name="file" className="file-input w-full max-w-xs" accept="image/png, image/jpeg" />
+
                                     <button type="button"
                                         className="py-3.5 px-7 text-base font-medium  focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
                                         Delete picture
