@@ -24,7 +24,7 @@ const MyProfile = async () => {
             }}
           >
             <div className="flex items-center justify-center h-full p-4">
-              <img src={user?.img ? `${user.img}` : "https://via.placeholder.com/80"}
+              <img src={user.imgg ? `/img/${user.img}` : "/images/Default.png"}
                 alt="Profile Picture"
                 className="w-20 h-20 rounded-full border-4 border-white bg-white"
               />
