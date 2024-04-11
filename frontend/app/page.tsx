@@ -34,7 +34,7 @@ export default async function Home() {
             <PetCard
               pid={pet._id}
               title={pet.name}
-              imageUrl={pet.img || "/images/default-Pet.png"}
+              imageUrl={pet.img ? `/img/${pet.img}` : "/images/default-Pet.png"}
               description={pet.desc}
             />
 
