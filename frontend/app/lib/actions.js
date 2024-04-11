@@ -6,6 +6,86 @@ import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
 import { auth, signIn } from "../../auth";
 import { fetchUserByEmail, fetchUserByUsername } from "./data";
+import axios from 'axios';
+
+
+
+
+
+
+// export const uploadImageToImageKit = async (file, fileName) => {
+//   try {
+//     const formData = new FormData();
+//     formData.append('file', file);
+//     formData.append('fileName', fileName);
+
+//     const response = await axios.post(
+//       'https://upload.imagekit.io/api/v1/files/upload',
+//       formData,
+//       { headers: { 'Content-Type': 'multipart/form-data' } }
+//     );
+
+//     if (response.status === 200) {
+//       return response.data.url;
+//     } else {
+//       throw new Error('Failed to upload image to ImageKit');
+//     }
+//   } catch (error) {
+//     console.error('Error uploading image to ImageKit:', error);
+//     throw error;
+//   }
+// };
+
+
+// export const uploadImageToImageKit_old = async (file,fileName) => {
+//   try {
+//     const formData = new FormData();
+//     formData.append('file', file);
+//     formData.append('fileName', fileName);
+    
+// console.log("formData",formData)
+//     const response = await axios.post('https://upload.imagekit.io/api/v1/files/upload', formData, {
+//       headers: {
+//         'Content-Type': 'multipart/form-data',
+//         Authorization: `Basic ${Buffer.from(`${process.env.IMAGEKIT_PRIVATE_KEY}:`).toString('base64')}`,
+//       },
+//     });
+
+//     if (response.status === 200) {
+//       return response.data.url;
+//     } else {
+//       throw new Error('Failed to upload image to ImageKit');
+//     }
+//   } catch (error) {
+//     console.error('Error uploading image to ImageKit:', error);
+//     throw error;
+//   }
+// };
+
+
+// export const uploadImageToImgur = async (imageUrl) => {
+//   try {
+//     const response = await axios.post(
+//       'https://api.imgur.com/3/image',
+//       { image: imageUrl },
+//       {
+//         headers: {
+//           Authorization: `Client-ID ${process.env.IMGUR_CLIENT_ID}`,
+//         },
+//       }
+//     );
+
+//     if (response.data.success) {
+//       return response.data.data.link;
+//     } else {
+//       throw new Error('Failed to upload image to Imgur');
+//     }
+//   } catch (error) {
+//     console.error('Error uploading image to Imgur:', error);
+//     throw error;
+//   }
+// };
+
 
 export const ManageRequest = async (formData) => {
   const { id, status } = Object.fromEntries(formData);
@@ -376,11 +456,49 @@ export const UpdateSettings_old = async (formData) => {
   redirect("/dashboard/profile");
 };
 
-export const UpdateSettings = async (formData) => {
-  const { id, username, email, password, phone, address } =
-    Object.fromEntries(formData);
 
-  // Check if the password field is not empty
+function generateRandomString(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+export const uploadImageToServer = async (imageFile,name) => {
+  try {
+    const formData = new FormData();
+    let xLoyRandomName = generateRandomString(6) + name
+      // formData.append("myImage", imageFile);
+     formData.append("myImage", imageFile, xLoyRandomName);
+    
+    const response = await axios.post(`${process.env.API_BASE_URL}api/upload`, formData);
+    // console.log("xLoy is asking for response mf",xLoyRandomName);
+    return "MyPet_" + xLoyRandomName;
+  } catch (error) {
+    console.error("xLoy: Error uploading image:", error);
+    throw new Error("xLoy: Failed to upload image");
+  }
+};
+
+
+export const UpdateSettings = async (formData) => {
+  const { id, username, email, password, phone, address,file } =
+    Object.fromEntries(formData);
+    
+    // console.log("MyFile",file);
+    // console.log("MyFile name",file.name);
+    let imageUrl = "";
+
+    if (file instanceof File && file.size > 0) {
+      imageUrl = await uploadImageToServer(file,file.name);
+      console.log(imageUrl)
+    }else{
+      console.log("image is empty")
+    }
+
   const shouldUpdatePassword = password !== "";
 
   // Check if the password meets the minimum length requirement
@@ -402,6 +520,7 @@ export const UpdateSettings = async (formData) => {
       email,
       phone,
       address,
+      img:imageUrl || "",
     };
 
     // If the password is provided, hash it and include it in the update
