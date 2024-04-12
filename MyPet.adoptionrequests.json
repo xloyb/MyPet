@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "66195f5d2c54d8f292501c19"
+  },
+  "user": {
+    "$oid": "6602308fa2dd7909753032c1"
+  },
+  "pet": {
+    "$oid": "65ffdc0c24ad8217be12cd5f"
+  },
+  "status": "pending",
+  "message": "MyDevify Team is testing Adoption Request Message.",
+  "createdAt": {
+    "$date": "2024-04-12T16:20:45.407Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-12T16:20:45.407Z"
+  },
+  "__v": 0
+}]

@@ -171,7 +171,11 @@ Once the setup is complete, you can start the development server:
 npm run dev
 ```
 
+You Can import the data i provided you in the repository root
 
+Login:
+Username: admin
+password: admin
    
 ## Authors
 

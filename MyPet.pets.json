@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "65ffdc0c24ad8217be12cd5f"
+  },
+  "breed": "Maine Coon",
+  "name": "Simba",
+  "desc": "Gentle giant, known for its affectionate nature.",
+  "price": 400,
+  "stock": 6,
+  "img": "MyPet_96ZWsZpexels-photo-356378.jpeg",
+  "age": "2 years",
+  "updatedAt": {
+    "$date": "2024-04-11T21:50:17.098Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65ffdc0c24ad8217be12cd60"
+  },
+  "breed": "German Shepherd",
+  "name": "Rocky",
+  "desc": "Intelligent and loyal, ideal for families and working roles.",
+  "price": 750,
+  "stock": 4,
+  "img": "MyPet_96ZWsZpexels-photo-356378.jpeg",
+  "age": "3 years"
+},
+{
+  "_id": {
+    "$oid": "65ffdc0c24ad8217be12cd61"
+  },
+  "breed": "Bengal Cat",
+  "name": "Leo",
+  "desc": "Highly active and playful, loves climbing and exploring.",
+  "price": 500,
+  "stock": 7,
+  "img": "MyPet_96ZWsZpexels-photo-356378.jpeg",
+  "age": "1 year"
+},
+{
+  "_id": {
+    "$oid": "65ffdc0c24ad8217be12cd62"
+  },
+  "breed": "Labrador Retriever",
+  "name": "Max",
+  "desc": "Friendly and outgoing, great with kids and other pets.",
+  "price": 600,
+  "stock": 5,
+  "img": "MyPet_96ZWsZpexels-photo-356378.jpeg",
+  "age": "2.5 years"
+},
+{
+  "_id": {
+    "$oid": "66185c3a3162f4129a17f14f"
+  },
+  "breed": "testPet",
+  "name": "testPet",
+  "desc": "testPet",
+  "price": 0,
+  "stock": 4,
+  "img": "MyPet_hEEvVQpexels-photo-356378.jpeg",
+  "age": "1",
+  "createdAt": {
+    "$date": "2024-04-11T21:55:06.073Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-11T21:55:06.073Z"
+  },
+  "__v": 0
+}]

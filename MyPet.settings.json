@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "661590cd0266a4b561b0570b"
+  },
+  "type": "announcement",
+  "message": "🔥 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+  "button": true,
+  "buttonLink": "https://www.mydevify.com/",
+  "createdAt": {
+    "$date": "2024-04-09T19:02:37.244Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-09T19:02:37.244Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661590d10266a4b561b0570f"
+  },
+  "type": "announcement",
+  "message": "🔥 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+  "button": false,
+  "createdAt": {
+    "$date": "2024-04-09T19:02:41.706Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-09T19:02:41.706Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66167956b900a5618780f587"
+  },
+  "type": "notification",
+  "message": "xLoy is testing the global notification !",
+  "button": false,
+  "createdAt": {
+    "$date": "2024-04-10T11:34:46.243Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-10T11:34:46.243Z"
+  },
+  "__v": 0
+}]

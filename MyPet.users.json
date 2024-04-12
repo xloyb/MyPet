@@ -1,0 +1,59 @@
+[{
+  "_id": {
+    "$oid": "6601f57d473a195b47a1d840"
+  },
+  "username": "louay",
+  "email": "example@gmail.com",
+  "password": "$2b$10$c8fc7jc4/W6purnvlwLg7eJW11PuKYJYUTerMv5AFLTUpVbbVYYQq",
+  "isAdmin": true,
+  "phone": "1234567890",
+  "address": "Tunis",
+  "createdAt": {
+    "$date": "2024-03-25T22:06:53.008Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-07T18:17:58.720Z"
+  },
+  "__v": 0,
+  "isTeam": true
+},
+{
+  "_id": {
+    "$oid": "6602308fa2dd7909753032c1"
+  },
+  "username": "admin",
+  "email": "example2@gmail.com",
+  "password": "$2b$10$of/i9O6VP3LY8yVFC/MaKO5/p9HvVZ6xW3.M2kBtt9MAR.I826eo.",
+  "isAdmin": true,
+  "phone": "1234567890",
+  "address": "Tunis",
+  "createdAt": {
+    "$date": "2024-03-26T02:18:55.941Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-11T21:25:32.180Z"
+  },
+  "__v": 0,
+  "isTeam": true,
+  "img": "MyPet_AhJtjHmanage_post.PNG"
+},
+{
+  "_id": {
+    "$oid": "661858103162f4129a17f062"
+  },
+  "username": "testuser",
+  "email": "testuser@gmail.com",
+  "password": "$2b$10$uWlfPjGxwN.n7DKjxwLW5.LRA7Nb2MCJ3nliroL3ffTS5ADcL3gqO",
+  "img": "MyPet_ddSZEllogo-red.png",
+  "isAdmin": false,
+  "isTeam": false,
+  "phone": "123456789",
+  "address": "Tunis",
+  "createdAt": {
+    "$date": "2024-04-11T21:37:20.101Z"
+  },
+  "updatedAt": {
+    "$date": "2024-04-11T21:42:12.923Z"
+  },
+  "__v": 0
+}]
