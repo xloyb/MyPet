@@ -25,8 +25,6 @@ const ModCp = async () => {
     <div className={styles.home_container}>
       <section className="mb-20 border-solid border-2 border-slate-700 rounded-2xl">
         <div className="h-28 flex items-center justify-center">
-          
-
           <form action={deleteNotification}>
             <button className="btn btn-outline btn-error mr-3">
               Disable Notifications

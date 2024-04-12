@@ -1,15 +1,12 @@
-import { fetchUserByUsername } from '@/app/lib/data'
-import { auth } from '@/auth'
-import React from 'react'
-import { FaFacebook } from 'react-icons/fa'
-import { FaSquareXTwitter } from 'react-icons/fa6'
-import { RiInstagramFill } from 'react-icons/ri'
+import { fetchUserByUsername } from "@/app/lib/data";
+import { auth } from "@/auth";
+import React from "react";
+import { FaFacebook } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { RiInstagramFill } from "react-icons/ri";
 
 const MyProfile = async () => {
-
   const { user } = await auth();
-
-
 
   return (
     <div>
@@ -25,7 +22,8 @@ const MyProfile = async () => {
             }}
           >
             <div className="flex items-center justify-center h-full p-4">
-              <img src={user.img ? `/img/${user.img}` : "/images/Default.png"}
+              <img
+                src={user.img ? `/img/${user.img}` : "/images/Default.png"}
                 alt="Profile Picture"
                 className="w-40 h-40 rounded-full border-4 border-white bg-white"
               />
@@ -77,7 +75,6 @@ const MyProfile = async () => {
                 rel="noopener noreferrer"
               >
                 <FaFacebook />
-
               </a>
               <a
                 href=""
@@ -86,16 +83,13 @@ const MyProfile = async () => {
                 rel="noopener noreferrer"
               >
                 <RiInstagramFill />
-
               </a>
               <a
-
                 className="text-blue-500 hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaSquareXTwitter />
-
               </a>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -110,39 +104,31 @@ const MyProfile = async () => {
               </ul>
             </div>
             <div className="navbar-end">
-
-              <a href='/dashboard/settings'
-
-                className="btn btn-primary"
-              >
+              <a href="/dashboard/settings" className="btn btn-primary">
                 Edit
               </a>
-
-
-
             </div>
           </div>
 
-
-
           <div className="stats shadow flex flex-wrap">
-
-          <div className="stat w-full sm:w-1/2 md:w-1/4">
+            <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">Admin</div>
-              <div className="stat-value text-primary text-base">{user.isAdmin ? 'Yes' : 'No'}</div>
+              <div className="stat-value text-primary text-base">
+                {user.isAdmin ? "Yes" : "No"}
+              </div>
             </div>
 
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">Moderator</div>
-              <div className="stat-value text-primary text-base">{user.isTeam ? 'Yes' : 'No'}</div>
+              <div className="stat-value text-primary text-base">
+                {user.isTeam ? "Yes" : "No"}
+              </div>
             </div>
 
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">UserName</div>
               <div className="stat-value text-base">{user.username}</div>
             </div>
-
-            
 
             <div className="stat w-full sm:w-1/2 md:w-1/4">
               <div className="stat-title">Phone</div>
@@ -157,15 +143,11 @@ const MyProfile = async () => {
               <div className="stat-title">Email</div>
               <div className="stat-value text-base">{user.email}</div>
             </div>
-            
           </div>
-
         </div>
-
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MyProfile
+export default MyProfile;

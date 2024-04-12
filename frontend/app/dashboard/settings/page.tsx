@@ -164,7 +164,6 @@
 
 // export default ProfilePage;
 
-
 import React from "react";
 
 import styles from "@/app/dashboard/dashboard.module.css";
@@ -177,8 +176,6 @@ const ProfilePage = async () => {
   const { user } = await auth();
 
   const fetchedUser = await fetchUser(user._id);
-
-
 
   return (
     <div className={styles.home_container}>
@@ -196,7 +193,11 @@ const ProfilePage = async () => {
               <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
                 <img
                   className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-                  src={fetchedUser.img ? `/img/${fetchedUser.img}` : "/images/Default.png"}
+                  src={
+                    fetchedUser.img
+                      ? `/img/${fetchedUser.img}`
+                      : "/images/Default.png"
+                  }
                   alt="Bordered avatar"
                 />
 
@@ -208,7 +209,12 @@ const ProfilePage = async () => {
                     Change picture
                   </button>
 
-                  <input type="file" name="file" className="file-input w-full max-w-xs" accept="image/png, image/jpeg" />
+                  <input
+                    type="file"
+                    name="file"
+                    className="file-input w-full max-w-xs"
+                    accept="image/png, image/jpeg"
+                  />
 
                   <button
                     type="button"
@@ -301,7 +307,7 @@ const ProfilePage = async () => {
                     placeholder={fetchedUser.address}
                   />
                 </div>
-               
+
                 <input type="hidden" name="id" value={fetchedUser.id} />
                 <div className="flex justify-end">
                   <button

@@ -6,12 +6,7 @@ import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
 import { auth, signIn } from "../../auth";
 import { fetchUserByEmail, fetchUserByUsername } from "./data";
-import axios from 'axios';
-
-
-
-
-
+import axios from "axios";
 
 // export const uploadImageToImageKit = async (file, fileName) => {
 //   try {
@@ -36,13 +31,12 @@ import axios from 'axios';
 //   }
 // };
 
-
 // export const uploadImageToImageKit_old = async (file,fileName) => {
 //   try {
 //     const formData = new FormData();
 //     formData.append('file', file);
 //     formData.append('fileName', fileName);
-    
+
 // console.log("formData",formData)
 //     const response = await axios.post('https://upload.imagekit.io/api/v1/files/upload', formData, {
 //       headers: {
@@ -61,7 +55,6 @@ import axios from 'axios';
 //     throw error;
 //   }
 // };
-
 
 // export const uploadImageToImgur = async (imageUrl) => {
 //   try {
@@ -85,7 +78,6 @@ import axios from 'axios';
 //     throw error;
 //   }
 // };
-
 
 export const ManageRequest = async (formData) => {
   const { id, status } = Object.fromEntries(formData);
@@ -143,18 +135,17 @@ export const CreateResquest = async (formData) => {
 };
 
 export const addUser = async (formData) => {
-  const { username, email, password, phone, address, isAdmin, isTeam,file } =
+  const { username, email, password, phone, address, isAdmin, isTeam, file } =
     Object.fromEntries(formData);
 
+  let imageUrl = "";
 
-    let imageUrl = "";
-
-    if (file instanceof File && file.size > 0) {
-      imageUrl = await uploadImageToServer(file,file.name);
-      console.log(imageUrl)
-    }else{
-      console.log("image is empty")
-    }
+  if (file instanceof File && file.size > 0) {
+    imageUrl = await uploadImageToServer(file, file.name);
+    console.log(imageUrl);
+  } else {
+    console.log("image is empty");
+  }
 
   try {
     connectToDB();
@@ -169,7 +160,7 @@ export const addUser = async (formData) => {
       address,
       isAdmin,
       isTeam,
-      img:imageUrl || ""
+      img: imageUrl || "",
     });
 
     await newUser.save();
@@ -262,14 +253,14 @@ export const addPet = async (formData) => {
   const { breed, name, desc, price, stock, file, age } =
     Object.fromEntries(formData);
 
-    let imageUrl = "";
+  let imageUrl = "";
 
-    if (file instanceof File && file.size > 0) {
-      imageUrl = await uploadImageToServer(file,file.name);
-      console.log(imageUrl)
-    }else{
-      console.log("image is empty")
-    }
+  if (file instanceof File && file.size > 0) {
+    imageUrl = await uploadImageToServer(file, file.name);
+    console.log(imageUrl);
+  } else {
+    console.log("image is empty");
+  }
 
   try {
     connectToDB();
@@ -280,7 +271,7 @@ export const addPet = async (formData) => {
       desc,
       price,
       stock,
-      img:imageUrl || "",
+      img: imageUrl || "",
       age,
     });
 
@@ -339,14 +330,14 @@ export const UpdatePet = async (formData) => {
   const { id, breed, name, desc, price, stock, file, age } =
     Object.fromEntries(formData);
 
-    let imageUrl = "";
+  let imageUrl = "";
 
-    if (file instanceof File && file.size > 0) {
-      imageUrl = await uploadImageToServer(file,file.name);
-      console.log(imageUrl)
-    }else{
-      console.log("image is empty")
-    }
+  if (file instanceof File && file.size > 0) {
+    imageUrl = await uploadImageToServer(file, file.name);
+    console.log(imageUrl);
+  } else {
+    console.log("image is empty");
+  }
 
   try {
     connectToDB();
@@ -356,7 +347,7 @@ export const UpdatePet = async (formData) => {
       desc,
       price,
       stock,
-      img:imageUrl || "",
+      img: imageUrl || "",
       age,
     };
 
@@ -376,17 +367,26 @@ export const UpdatePet = async (formData) => {
 };
 
 export const UpdateUser = async (formData) => {
-  const { id, username, email, password, phone, address, isAdmin, isTeam,file } =
-    Object.fromEntries(formData);
+  const {
+    id,
+    username,
+    email,
+    password,
+    phone,
+    address,
+    isAdmin,
+    isTeam,
+    file,
+  } = Object.fromEntries(formData);
 
-    let imageUrl = "";
+  let imageUrl = "";
 
-    if (file instanceof File && file.size > 0) {
-      imageUrl = await uploadImageToServer(file,file.name);
-      console.log(imageUrl)
-    }else{
-      console.log("image is empty")
-    }
+  if (file instanceof File && file.size > 0) {
+    imageUrl = await uploadImageToServer(file, file.name);
+    console.log(imageUrl);
+  } else {
+    console.log("image is empty");
+  }
 
   try {
     connectToDB();
@@ -398,7 +398,7 @@ export const UpdateUser = async (formData) => {
       address,
       isAdmin,
       isTeam,
-      img:imageUrl || ""
+      img: imageUrl || "",
     };
 
     if (password) {
@@ -495,10 +495,10 @@ export const UpdateSettings_old = async (formData) => {
   redirect("/dashboard/profile");
 };
 
-
 function generateRandomString(length) {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -506,14 +506,17 @@ function generateRandomString(length) {
   return result;
 }
 
-export const uploadImageToServer = async (imageFile,name) => {
+export const uploadImageToServer = async (imageFile, name) => {
   try {
     const formData = new FormData();
-    let xLoyRandomName = generateRandomString(6) + name
-      // formData.append("myImage", imageFile);
-     formData.append("myImage", imageFile, xLoyRandomName);
-    
-    const response = await axios.post(`${process.env.API_BASE_URL}api/upload`, formData);
+    let xLoyRandomName = generateRandomString(6) + name;
+    // formData.append("myImage", imageFile);
+    formData.append("myImage", imageFile, xLoyRandomName);
+
+    const response = await axios.post(
+      `${process.env.API_BASE_URL}api/upload`,
+      formData
+    );
     // console.log("xLoy is asking for response mf",xLoyRandomName);
     return "MyPet_" + xLoyRandomName;
   } catch (error) {
@@ -522,21 +525,20 @@ export const uploadImageToServer = async (imageFile,name) => {
   }
 };
 
-
 export const UpdateSettings = async (formData) => {
-  const { id, username, email, password, phone, address,file } =
+  const { id, username, email, password, phone, address, file } =
     Object.fromEntries(formData);
-    
-    // console.log("MyFile",file);
-    // console.log("MyFile name",file.name);
-    let imageUrl = "";
 
-    if (file instanceof File && file.size > 0) {
-      imageUrl = await uploadImageToServer(file,file.name);
-      console.log(imageUrl)
-    }else{
-      console.log("image is empty")
-    }
+  // console.log("MyFile",file);
+  // console.log("MyFile name",file.name);
+  let imageUrl = "";
+
+  if (file instanceof File && file.size > 0) {
+    imageUrl = await uploadImageToServer(file, file.name);
+    console.log(imageUrl);
+  } else {
+    console.log("image is empty");
+  }
 
   const shouldUpdatePassword = password !== "";
 
@@ -559,7 +561,7 @@ export const UpdateSettings = async (formData) => {
       email,
       phone,
       address,
-      img:imageUrl || "",
+      img: imageUrl || "",
     };
 
     // If the password is provided, hash it and include it in the update
@@ -585,15 +587,14 @@ export const UpdateSettings = async (formData) => {
   redirect("/dashboard/profile");
 };
 
-
 export const register = async (formData) => {
-  const { username,email,phone, password } = Object.fromEntries(formData);
+  const { username, email, phone, password } = Object.fromEntries(formData);
   const CheckUsername = await fetchUserByUsername(username);
   if (CheckUsername) throw new Error("User Name Exists");
   const CheckEmail = await fetchUserByEmail(email);
   if (CheckEmail) throw new Error("Email Is Taken");
   try {
-    connectToDB()
+    connectToDB();
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -601,15 +602,13 @@ export const register = async (formData) => {
 
     const newUser = new User({
       username: username,
-      email:email,
+      email: email,
       password: hashedPassword,
-      phone:phone,
-      isAdmin:false,
-      isTeam:false,
+      phone: phone,
+      isAdmin: false,
+      isTeam: false,
     });
-    await newUser.save()
-
-
+    await newUser.save();
   } catch (err) {
     console.log(err);
     throw err;

@@ -6,16 +6,13 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
 const ManageRequests = async () => {
-
-  const {user} = await auth();
-  if(!user.isAdmin && !user.isTeam){
-    redirect("/dashboard/403")
+  const { user } = await auth();
+  if (!user.isAdmin && !user.isTeam) {
+    redirect("/dashboard/403");
   }
 
-
-
   const allrequests = await fetchAllRequests();
-   //console.log(allrequests);
+  //console.log(allrequests);
   return (
     <div>
       <div className={styles.home_container}>
@@ -27,8 +24,8 @@ const ManageRequests = async () => {
           const user = await fetchUser(ar.user.toString());
           const pet = await fetchPet(ar.pet.toString());
           //  console.log("testing pet id")
-            console.log(ar.pet.toString())
-            console.log(pet)
+          console.log(ar.pet.toString());
+          console.log(pet);
 
           return (
             <div className="pt-10">
@@ -102,7 +99,7 @@ const ManageRequests = async () => {
                   </span>
 
                   <form action={ManageRequest}>
-                    <input type="hidden" name="id" value={ar._id}/>
+                    <input type="hidden" name="id" value={ar._id} />
                     <select
                       className="select select-bordered w-full max-w-xs"
                       name="status"
@@ -116,9 +113,7 @@ const ManageRequests = async () => {
                     </select>
 
                     <div className="card-actions justify-end">
-                      <button className="btn btn-primary">
-                        Submit
-                      </button>
+                      <button className="btn btn-primary">Submit</button>
                     </div>
                   </form>
                 </div>

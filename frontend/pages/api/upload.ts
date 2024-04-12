@@ -1,5 +1,3 @@
-
-
 // export default handler;
 import { NextApiHandler, NextApiRequest } from "next";
 import formidable from "formidable";
@@ -46,8 +44,6 @@ const handler: NextApiHandler = async (req, res) => {
 
   // const file = await readFile(req, true);
   // res.json({ file });
-
-  
 };
 
 export default handler;

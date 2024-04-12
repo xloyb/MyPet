@@ -1,7 +1,15 @@
-"use client"
+"use client";
 
-import styles from './chart.module.css'
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import styles from "./chart.module.css";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 const data = [
   {
@@ -59,14 +67,24 @@ const Chart = () => {
         >
           <XAxis dataKey="name" />
           <YAxis />
-          <Tooltip contentStyle={{ border:"none"}}/>
+          <Tooltip contentStyle={{ border: "none" }} />
           <Legend />
-          <Line type="monotone" dataKey="visit" stroke="#8884d8" strokeDasharray="5 5" />
-          <Line type="monotone" dataKey="click" stroke="#82ca9d" strokeDasharray="3 4 5 2" />
+          <Line
+            type="monotone"
+            dataKey="visit"
+            stroke="#8884d8"
+            strokeDasharray="5 5"
+          />
+          <Line
+            type="monotone"
+            dataKey="click"
+            stroke="#82ca9d"
+            strokeDasharray="3 4 5 2"
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>
-  )
-}
+  );
+};
 
-export default Chart
+export default Chart;

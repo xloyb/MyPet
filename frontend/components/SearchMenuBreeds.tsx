@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import { Fragment, useState } from "react";
 
-import { dogBreeds } from '@/constants'
+import { dogBreeds } from "@/constants";
 import { SearchBreedsProps } from "@/types/gonna-add-all-the-props-when-iget this project done";
 
-const SearchMenuBreeds = ({ MenuBreeds, setMenuBreeds }: SearchBreedsProps ) => {
+const SearchMenuBreeds = ({ MenuBreeds, setMenuBreeds }: SearchBreedsProps) => {
   const [query, setQuery] = useState<string>("");
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
@@ -33,37 +33,40 @@ const SearchMenuBreeds = ({ MenuBreeds, setMenuBreeds }: SearchBreedsProps ) => 
   };
 
   return (
-    <div className='search-MenuBreeds'>
-      <div className='relative w-full'>
-        <div className='absolute top-[14px]'>
+    <div className="search-MenuBreeds">
+      <div className="relative w-full">
+        <div className="absolute top-[14px]">
           <Image
-            src='/images/pets-logo.svg'
+            src="/images/pets-logo.svg"
             width={20}
             height={20}
-            className='ml-4'
-            alt='car logo'
+            className="ml-4"
+            alt="car logo"
           />
         </div>
 
         <input
           type="text"
-          className='search-MenuBreeds__input'
+          className="search-MenuBreeds__input"
           value={query}
           onChange={handleInputChange}
-          placeholder='testing'
+          placeholder="testing"
         />
 
         {showOptions && (
-          <ul className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
+          <ul className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {filtereddogBreeds.length === 0 && query !== "" ? (
-              <li className='search-MenuBreeds__option' onClick={() => handleOptionClick(query)}>
+              <li
+                className="search-MenuBreeds__option"
+                onClick={() => handleOptionClick(query)}
+              >
                 Create "{query}"
               </li>
             ) : (
               filtereddogBreeds.map((item) => (
                 <li
                   key={item}
-                  className='search-MenuBreeds__option'
+                  className="search-MenuBreeds__option"
                   onClick={() => handleOptionClick(item)}
                 >
                   {item}
@@ -79,9 +82,6 @@ const SearchMenuBreeds = ({ MenuBreeds, setMenuBreeds }: SearchBreedsProps ) => 
 
 export default SearchMenuBreeds;
 
-
-
-
 // 'use client'
 
 // import Image from "next/image";
@@ -90,7 +90,6 @@ export default SearchMenuBreeds;
 
 // import { dogBreeds } from '@/constants'
 // import { SearchBreedsProps } from "@/types";
-
 
 // const SearchMenuBreeds = ({ MenuBreeds, setMenuBreeds }: SearchBreedsProps ) => {
 //   const [query, setQuery] = useState("");
@@ -122,17 +121,16 @@ export default SearchMenuBreeds;
 //           <Combobox.Input
 //             className='search-MenuBreeds__input'
 //             displayValue={(item: string) => item}
-//             onChange={(event) => setQuery(event.target.value)} 
+//             onChange={(event) => setQuery(event.target.value)}
 //             placeholder='testing'
 //           />
 
-
 //           <Transition
-//             as={Fragment} 
+//             as={Fragment}
 //             leave='transition ease-in duration-100'
 //             leaveFrom='opacity-100'
 //             leaveTo='opacity-0'
-//             afterLeave={() => setQuery("")} 
+//             afterLeave={() => setQuery("")}
 //           >
 //             <Combobox.Options
 //               className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'

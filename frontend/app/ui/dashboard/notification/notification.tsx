@@ -8,13 +8,12 @@ const Notification = async () => {
 
   return (
     <div className={styles.home_container}>
-{notif ? (
-  <div role="alert" className="alert alert-success">
-    <IoIosNotifications className="stroke-current shrink-0 h-6 w-6" />
-    <span>{notif.message}</span>
-  </div>
-) : null}
-
+      {notif ? (
+        <div role="alert" className="alert alert-success">
+          <IoIosNotifications className="stroke-current shrink-0 h-6 w-6" />
+          <span>{notif.message}</span>
+        </div>
+      ) : null}
     </div>
   );
 };

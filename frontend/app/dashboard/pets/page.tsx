@@ -1,20 +1,18 @@
-import React from 'react'
-import styles from '../dashboard.module.css';
-import Search from '@/app/ui/dashboard/search/search'
-import Link from 'next/link'
-import Pagination from '@/app/ui/dashboard/pagination/pagination';
-import { fetchPets } from '@/app/lib/data'
-import { deletPet } from '@/app/lib/actions';
-import { auth } from '@/auth';
-import { redirect } from 'next/navigation';
+import React from "react";
+import styles from "../dashboard.module.css";
+import Search from "@/app/ui/dashboard/search/search";
+import Link from "next/link";
+import Pagination from "@/app/ui/dashboard/pagination/pagination";
+import { fetchPets } from "@/app/lib/data";
+import { deletPet } from "@/app/lib/actions";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 const PetsPage = async ({ searchParams }) => {
- 
-  const {user} = await auth();
-  if(!user.isAdmin && !user.isTeam){
-    redirect("/dashboard/403")
+  const { user } = await auth();
+  if (!user.isAdmin && !user.isTeam) {
+    redirect("/dashboard/403");
   }
-  
 
   const q = searchParams?.q || "";
   const pets = await fetchPets(q);
@@ -29,10 +27,8 @@ const PetsPage = async ({ searchParams }) => {
       <div>
         <div className="overflow-x-auto">
           <table className="table">
-
             <thead>
               <tr>
-
                 <th>Breed / Name</th>
                 <th>Description</th>
 
@@ -40,15 +36,20 @@ const PetsPage = async ({ searchParams }) => {
               </tr>
             </thead>
             <tbody>
-              {pets.map(pet => (
-
+              {pets.map((pet) => (
                 <tr key={pet.id}>
-
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask mask-squircle w-12 h-12">
-                          <img src={pet.img ? `/img/${pet.img}` : "/images/default-Pet.png"} alt="Avatar" />
+                          <img
+                            src={
+                              pet.img
+                                ? `/img/${pet.img}`
+                                : "/images/default-Pet.png"
+                            }
+                            alt="Avatar"
+                          />
                         </div>
                       </div>
                       <div>
@@ -60,22 +61,21 @@ const PetsPage = async ({ searchParams }) => {
                   <td>
                     {pet.phone}
                     <br />
-                    <span className="badge badge-ghost badge-sm">{pet.desc}</span>
+                    <span className="badge badge-ghost badge-sm">
+                      {pet.desc}
+                    </span>
                   </td>
-                  <th className='flex'>
+                  <th className="flex">
+                    <Link href={`/dashboard/pets/${pet.id}`}>
+                      <button className="btn btn-success">Update</button>
+                    </Link>
 
-                  <Link href={`/dashboard/pets/${pet.id}`}>
-                    <button className="btn btn-success">
-                      Update
-                    </button>
-                  </Link>
-
-
-                    
-                  <form action={deletPet}>
-                    <input type='hidden' name='id' value={pet.id}></input>
-                    <button type='submit' className="btn btn-error">Delete</button>
-                  </form>
+                    <form action={deletPet}>
+                      <input type="hidden" name="id" value={pet.id}></input>
+                      <button type="submit" className="btn btn-error">
+                        Delete
+                      </button>
+                    </form>
                   </th>
                 </tr>
               ))}
@@ -85,7 +85,7 @@ const PetsPage = async ({ searchParams }) => {
       </div>
       <Pagination />
     </div>
-  )
-}
+  );
+};
 
-export default PetsPage
+export default PetsPage;

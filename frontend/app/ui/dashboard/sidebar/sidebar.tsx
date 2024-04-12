@@ -7,7 +7,12 @@ import { FaBug, FaThList } from "react-icons/fa";
 import { FcApproval, FcIdea } from "react-icons/fc";
 import { IoIosAddCircle, IoMdPersonAdd } from "react-icons/io";
 import { IoSettings } from "react-icons/io5";
-import { MdAdminPanelSettings, MdOutlineBugReport, MdOutlinePets } from "react-icons/md";
+import {
+  MdAdminPanelSettings,
+  MdDashboard,
+  MdOutlineBugReport,
+  MdOutlinePets,
+} from "react-icons/md";
 
 const Sidebar = async () => {
   const { user } = await auth();
@@ -48,9 +53,10 @@ const Sidebar = async () => {
                   <span className="text-xs text-gray-500 ml-1">(Admin)</span>
                 )}
                 {!user.isAdmin && user.isTeam && (
-                  <span className="text-xs text-gray-500 ml-1">(Moderator)</span>
+                  <span className="text-xs text-gray-500 ml-1">
+                    (Moderator)
+                  </span>
                 )}
-
               </div>
               <div className="flex flex-col">
                 <div className="text-xs text-gray-500 ml-1">{user.phone}</div>
@@ -73,28 +79,26 @@ const Sidebar = async () => {
 
                   <div className="collapse-title flex items-center">
                     {" "}
-
-                    <MdAdminPanelSettings className="text-2xl mr-1" /> Admin Controle Panel
+                    <MdAdminPanelSettings className="text-2xl mr-1" /> Admin
+                    Controle Panel
                   </div>
                   <div className="collapse-content">
                     <ul>
-
-
                       <Link href="/dashboard/users">
                         <li className="font-medium ml-8 ">
-
-                          <span><FaThList className="mr-1" /> Users List</span>
+                          <span>
+                            <FaThList className="mr-1" /> Users List
+                          </span>
                         </li>
                       </Link>
-
 
                       <Link href="/dashboard/users/add">
                         <li className="font-medium ml-8 ">
-
-                          <span><IoMdPersonAdd className="mr-1" /> Add User</span>
+                          <span>
+                            <IoMdPersonAdd className="mr-1" /> Add User
+                          </span>
                         </li>
                       </Link>
-
                     </ul>
                   </div>
                 </div>
@@ -107,46 +111,63 @@ const Sidebar = async () => {
 
                 <div className="collapse-title flex items-center">
                   {" "}
-
-                  <MdAdminPanelSettings className="text-2xl mr-1" /> Moderator Controle Panel
+                  <MdAdminPanelSettings className="text-2xl mr-1" /> Moderator
+                  Controle Panel
                 </div>
                 <div className="collapse-content">
                   <ul>
-
-
-                  <Link href="/dashboard/modcp">
+                    <Link href="/dashboard/modcp">
                       <li className="font-medium ml-8 flex ">
-                        <span><MdAdminPanelSettings className="mr-1" /> Mods Controle Panel </span>
+                        <span>
+                          <MdAdminPanelSettings className="mr-1" /> Mods
+                          Controle Panel{" "}
+                        </span>
                       </li>
                     </Link>
 
                     <Link href="/dashboard/pets">
                       <li className="font-medium ml-8 flex ">
-
-                        <span><FaThList className="mr-1" /> Pets List </span>
+                        <span>
+                          <FaThList className="mr-1" /> Pets List{" "}
+                        </span>
                       </li>
                     </Link>
 
-
                     <Link href="/dashboard/pets/add">
                       <li className="font-medium ml-8 flex ">
-
-                        <span><IoIosAddCircle className="mr-1" /> Add Pet </span>
+                        <span>
+                          <IoIosAddCircle className="mr-1" /> Add Pet{" "}
+                        </span>
                       </li>
                     </Link>
 
                     <Link href="/dashboard/managerequests">
                       <li className="font-medium ml-8 flex ">
-
-                        <span><CgProfile className="mr-1" /> Manage Requests </span>
+                        <span>
+                          <CgProfile className="mr-1" /> Manage Requests{" "}
+                        </span>
                       </li>
                     </Link>
-
-
                   </ul>
                 </div>
               </div>
             )}
+
+            <ul className="menu bg-base-200 w-56 rounded-box">
+              <li>
+                <h2 className="menu-title">Dashboard</h2>
+                <ul>
+                  <Link href="/dashboard">
+                    <li>
+                      <span>
+                        <MdDashboard className="mr-1" />
+                        Dashboard
+                      </span>
+                    </li>
+                  </Link>
+                </ul>
+              </li>
+            </ul>
 
             <ul className="menu bg-base-200 w-56 rounded-box">
               <li>
@@ -169,13 +190,9 @@ const Sidebar = async () => {
                       </span>
                     </li>
                   </Link>
-
                 </ul>
               </li>
             </ul>
-
-
-
 
             <ul className="menu bg-base-200 w-56 rounded-box">
               <li>
@@ -183,14 +200,16 @@ const Sidebar = async () => {
                 <ul>
                   <Link href="/dashboard/petslist">
                     <li>
-
-                      <span><MdOutlinePets className="mr-1" /> Pets List</span>
+                      <span>
+                        <MdOutlinePets className="mr-1" /> Pets List
+                      </span>
                     </li>
                   </Link>
                   <Link href="/dashboard/myrequests">
                     <li>
-
-                      <span><FcApproval className="mr-1" /> Adoption Requests </span>
+                      <span>
+                        <FcApproval className="mr-1" /> Adoption Requests{" "}
+                      </span>
                     </li>
                   </Link>
                 </ul>
@@ -201,16 +220,24 @@ const Sidebar = async () => {
               <li>
                 <h2 className="menu-title">MyPet Development</h2>
                 <ul>
-                  <Link target="_blank" href="https://helpdesk.mydevify.com/tickets/create_new">
+                  <Link
+                    target="_blank"
+                    href="https://helpdesk.mydevify.com/tickets/create_new"
+                  >
                     <li>
-
-                      <span><FaBug className="mr-1" /> Bug Report</span>
+                      <span>
+                        <FaBug className="mr-1" /> Bug Report
+                      </span>
                     </li>
                   </Link>
-                  <Link target="_blank" href="https://helpdesk.mydevify.com/tickets/create_new">
+                  <Link
+                    target="_blank"
+                    href="https://helpdesk.mydevify.com/tickets/create_new"
+                  >
                     <li>
-
-                      <span><FcIdea className="mr-1" /> Suggest</span>
+                      <span>
+                        <FcIdea className="mr-1" /> Suggest
+                      </span>
                     </li>
                   </Link>
                 </ul>

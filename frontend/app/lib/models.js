@@ -42,14 +42,12 @@ const userSchema = new mongoose.Schema(
 const petSchema = new mongoose.Schema(
   {
     breed: {
-        type: String,
-        required: true,
-       
-      },
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
-     
     },
     desc: {
       type: String,
@@ -75,53 +73,56 @@ const petSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-
 const adoptionRequestSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
+      ref: "User",
+      required: true,
     },
     pet: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Pet',
-      required: true
+      ref: "Pet",
+      required: true,
     },
     status: {
       type: String,
-      enum: ['pending', 'approved', 'rejected'],
-      default: 'pending'
+      enum: ["pending", "approved", "rejected"],
+      default: "pending",
     },
     message: {
-      type: String
-    }
+      type: String,
+    },
   },
   { timestamps: true }
 );
 
-const siteSettingsSchema = new mongoose.Schema({
-  type: {
+const siteSettingsSchema = new mongoose.Schema(
+  {
+    type: {
       type: String,
-      enum: ['announcement', 'notification'],
-      required: true
-  },
-  message: {
+      enum: ["announcement", "notification"],
+      required: true,
+    },
+    message: {
       type: String,
-      required: true
-  },
-  button: {
+      required: true,
+    },
+    button: {
       type: Boolean,
-      default: false
+      default: false,
+    },
+    buttonLink: {
+      type: String,
+    },
   },
-  buttonLink: {
-      type: String
-  }
-},
-{ timestamps: true }
+  { timestamps: true }
 );
 
-export const AdoptionRequest = mongoose.models.AdoptionRequest || mongoose.model("AdoptionRequest", adoptionRequestSchema);
+export const AdoptionRequest =
+  mongoose.models.AdoptionRequest ||
+  mongoose.model("AdoptionRequest", adoptionRequestSchema);
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
 export const Pet = mongoose.models.Pet || mongoose.model("Pet", petSchema);
-export const Settings = mongoose.models.Settings || mongoose.model("Settings", siteSettingsSchema);
+export const Settings =
+  mongoose.models.Settings || mongoose.model("Settings", siteSettingsSchema);

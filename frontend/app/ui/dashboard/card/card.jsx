@@ -1,7 +1,7 @@
 import React from "react";
 import { LuUsers2 } from "react-icons/lu";
 
-const Card = () => {
+const Card = ({ img }) => {
   return (
     <div>
       <div className="card w-64 bg-base-100 shadow-xl">
@@ -14,10 +14,7 @@ const Card = () => {
           <span>100k</span>
         </div>
         <figure>
-          <img
-            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-            alt="Shoes"
-          />
+          <img src={img} alt="Shoes" />
         </figure>
       </div>
     </div>

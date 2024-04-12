@@ -1,23 +1,31 @@
-import React from 'react'
+import React from "react";
 import { MdAdminPanelSettings } from "react-icons/md";
-import styles from '@/app/dashboard/dashboard.module.css'
+import styles from "@/app/dashboard/dashboard.module.css";
 
 const Forbidden = () => {
   return (
     <div className={styles.home_container}>
       <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content">
-  
-    <div>
-      <h1 className=" flex text-5xl font-bold">  <MdAdminPanelSettings  /> Access Denied.  </h1>
-      <p className="py-6"></p>
-      <a href='https://helpdesk.mydevify.com/' target='_blank' className='ml-8 mt-4 btn btn-primary'> Report a problem</a>
-     
+        <div className="hero-content">
+          <div>
+            <h1 className=" flex text-5xl font-bold">
+              {" "}
+              <MdAdminPanelSettings /> Access Denied.{" "}
+            </h1>
+            <p className="py-6"></p>
+            <a
+              href="https://helpdesk.mydevify.com/"
+              target="_blank"
+              className="ml-8 mt-4 btn btn-primary"
+            >
+              {" "}
+              Report a problem
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-    </div>
-  )
-}
+  );
+};
 
-export default Forbidden
+export default Forbidden;
