@@ -6,10 +6,11 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
 const ManageRequests = async () => {
-  const { user } = await auth();
-  if (!user.isAdmin && !user.isTeam) {
-    redirect("/dashboard/403");
-  }
+  // const { userr } = await auth();
+
+  // if (!userr.isAdmin && !userr.isTeam) {
+  //   redirect("/dashboard/403");
+  // }
 
   const allrequests = await fetchAllRequests();
   //console.log(allrequests);
@@ -22,16 +23,17 @@ const ManageRequests = async () => {
 
         {allrequests.map(async (ar) => {
           const user = await fetchUser(ar.user.toString());
+          console.log(user)
           const pet = await fetchPet(ar.pet.toString());
           //  console.log("testing pet id")
-          console.log(ar.pet.toString());
-          console.log(pet);
+          // console.log(ar.pet.toString());
+          // console.log(pet);
 
           return (
             <div className="pt-10">
               <div className="card lg:card-side bg-base-100 shadow-xl">
                 <figure className="max-w-md">
-                  <img src={pet.img || "/images/default-pet.png"} alt="Album" />
+                  <img src={pet.img ? `/img/${pet.img}` : "/images/default-Pet.png"} alt="Album" />
                 </figure>
                 <div className="card-body">
                   <h2 className="text-5xl font-bold">
@@ -43,7 +45,8 @@ const ManageRequests = async () => {
                       <div className="w-10 rounded-full">
                         <img
                           alt="avatar"
-                          src={user.img || "/images/Default.png"}
+                          
+                          src={user.img ? `/img/${user.img}` : "/images/Default.png"}
                         />
                       </div>
                     </div>

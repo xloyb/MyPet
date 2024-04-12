@@ -30,7 +30,7 @@ const RequestsPage = async () => {
             <div className="pt-10">
               <div className="card lg:card-side bg-base-100 shadow-xl">
                 <figure className="max-w-md">
-                  <img src={pet.img || "/images/default-pet.png"} alt="Album" />
+                  <img src={pet.img ? `/img/${pet.img}` : "/images/default-Pet.png"} alt="Album" />
                 </figure>
                 <div className="card-body">
                   <h2 className="text-5xl font-bold">

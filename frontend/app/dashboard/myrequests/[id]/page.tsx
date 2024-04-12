@@ -25,14 +25,14 @@ const CreateAdoptionRequest = async ({ params }) => {
                 <div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
                   <div className="w-full">
                     <input
-                      type="text"
+                      type="hidden"
                       id="uid"
                       name="uid"
                       value={user._id}
                       className=" border border-indigo-300  text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
                     />
                     <input
-                      type="text"
+                      type="hidden"
                       id="pid"
                       name="pid"
                       value={pet._id}
