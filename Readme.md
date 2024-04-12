@@ -6,7 +6,8 @@ Welcome to MyPet, where the passion for pet adoption meets the expertise of MyDe
 
 
 ## Showcase
-
+  
+  
 | ![Image 1](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/dark/Dashboard.PNG) | ![Image 2](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/light/Dashboard.PNG) |
 |-------------------------|-------------------------|
 | ![Image 3](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/dark/Home.PNG)| ![Image 4](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/light/Home.PNG) |
