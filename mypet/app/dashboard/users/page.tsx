@@ -4,7 +4,7 @@ import Search from "@/app/ui/dashboard/search/search";
 import Link from "next/link";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import { fetchUsers } from "@/app/lib/data";
-import { deletUser } from "@/app/lib/actions";
+import { deleteUser } from "@/app/lib/actions";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
@@ -74,7 +74,7 @@ const UsersPage = async ({ searchParams }) => {
                       <button className="btn btn-success">Update</button>
                     </Link>
 
-                    <form action={deletUser}>
+                    <form action={deleteUser}>
                       <input type="hidden" name="id" value={user.id}></input>
                       <button type="submit" className="btn btn-error">
                         Delete

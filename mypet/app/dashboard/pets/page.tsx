@@ -4,7 +4,7 @@ import Search from "@/app/ui/dashboard/search/search";
 import Link from "next/link";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import { fetchPets } from "@/app/lib/data";
-import { deletPet } from "@/app/lib/actions";
+import { deletePet } from "@/app/lib/actions";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
@@ -70,7 +70,7 @@ const PetsPage = async ({ searchParams }) => {
                       <button className="btn btn-success">Update</button>
                     </Link>
 
-                    <form action={deletPet}>
+                    <form action={deletePet}>
                       <input type="hidden" name="id" value={pet.id}></input>
                       <button type="submit" className="btn btn-error">
                         Delete

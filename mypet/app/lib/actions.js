@@ -79,6 +79,68 @@ import axios from "axios";
 //   }
 // };
 
+
+export const deletePetsRequests = async ({ petId }) => {
+  try {
+    await connectToDB();
+    const result = await AdoptionRequest.deleteMany({ pet: petId });
+    revalidatePath("/dashboard/pets");
+    return result; 
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to delete requests!");
+  }
+};
+
+
+export const deletePet = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+  try {
+    await deletePetsRequests({petId:id})
+    connectToDB();
+
+    await Pet.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete Pet!");
+  }
+  revalidatePath("/dashboard/pets");
+};
+
+
+export const deleteUserRequests = async ({ userId }) => {
+  try {
+    // console.log(userId, "deleting requests");
+    await connectToDB();
+    const result = await AdoptionRequest.deleteMany({ user: userId });
+    revalidatePath("/dashboard/users");
+    return result; 
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to delete user requests!");
+  }
+};
+
+
+export const deleteUser = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+  try {
+    await deleteUserRequests({ userId: id });
+      // console.log(id,"user request deleted")
+    
+    connectToDB();
+    await User.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete User!");
+  }
+  revalidatePath("/dashboard/users");
+};
+
+
+
+
+
 export const ManageRequest = async (formData) => {
   const { id, status } = Object.fromEntries(formData);
 
@@ -298,33 +360,8 @@ export const deletAnnouncement = async (formData) => {
   revalidatePath("/dashboard/pets");
 };
 
-export const deletPet = async (formData) => {
-  const { id } = Object.fromEntries(formData);
 
-  try {
-    connectToDB();
 
-    await Pet.findByIdAndDelete(id);
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to delete Pet!");
-  }
-  revalidatePath("/dashboard/pets");
-};
-
-export const deletUser = async (formData) => {
-  const { id } = Object.fromEntries(formData);
-
-  try {
-    connectToDB();
-
-    await User.findByIdAndDelete(id);
-  } catch (err) {
-    console.log(err);
-    throw new Error("Failed to delete User!");
-  }
-  revalidatePath("/dashboard/users");
-};
 
 export const UpdatePet = async (formData) => {
   const { id, breed, name, desc, price, stock, file, age } =
