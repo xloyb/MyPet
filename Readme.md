@@ -10,10 +10,10 @@ Welcome to MyPet, where the passion for pet adoption meets the expertise of MyDe
   
 | ![Image 1](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/dark/Dashboard.PNG) | ![Image 2](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/light/Dashboard.PNG) |
 |-------------------------|-------------------------|
-| ![Image 3](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/dark/Home.PNG)| ![Image 4](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/light/Home.PNG) |
-| ![Image 5](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/dark/ModCP.PNG)| ![Image 6](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/light/ModCP.PNG) |
-| ![Image 7](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/dark/Managing_Requests.PNG)| ![Image 8](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/light/Managing_Requests.PNG) |
-| ![Image 9](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/dark/PetsList.PNG)| ![Image 10](https://github.com/mydevify/MyPet/blob/main/frontend/showcase/light/PetsList.PNG) |
+| ![Image 3](https://github.com/mydevify/MyPet/blob/main/mypet/showcase/dark/Home.PNG)| ![Image 4](https://github.com/mydevify/MyPet/blob/main/mypet/showcase/light/Home.PNG) |
+| ![Image 5](https://github.com/mydevify/MyPet/blob/main/mypet/showcase/dark/ModCP.PNG)| ![Image 6](https://github.com/mydevify/MyPet/blob/main/mypet/showcase/light/ModCP.PNG) |
+| ![Image 7](https://github.com/mydevify/MyPet/blob/main/mypet/showcase/dark/Managing_Requests.PNG)| ![Image 8](https://github.com/mydevify/MyPet/blob/main/mypet/showcase/light/Managing_Requests.PNG) |
+| ![Image 9](https://github.com/mydevify/MyPet/blob/main/mypet/showcase/dark/PetsList.PNG)| ![Image 10](https://github.com/mydevify/MyPet/blob/main/mypet/showcase/light/PetsList.PNG) |
 
 ## Development
 
