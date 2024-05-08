@@ -312,7 +312,7 @@ export const addNotification = async (formData) => {
 };
 
 
-export const addveterinary = async (formData) => {
+export const addVeterinary = async (formData) => {
   const { name, location,  desc, file } =
     Object.fromEntries(formData);
 
@@ -346,7 +346,7 @@ export const addveterinary = async (formData) => {
 };
 
 
-export const addpetstore = async (formData) => {
+export const addPetStore = async (formData) => {
   const { name, location,  desc, file } =
     Object.fromEntries(formData);
 
