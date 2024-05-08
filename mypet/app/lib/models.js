@@ -75,6 +75,57 @@ const petSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+
+
+const veterinarySchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
+
+    img: {
+      type: String,
+    },
+
+  },
+  { timestamps: true }
+);
+
+
+
+const petstoreSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
+
+    img: {
+      type: String,
+    },
+
+  },
+  { timestamps: true }
+);
+
+
 const adoptionRequestSchema = new mongoose.Schema(
   {
     user: {
@@ -128,3 +179,6 @@ export const User = mongoose.models.User || mongoose.model("User", userSchema);
 export const Pet = mongoose.models.Pet || mongoose.model("Pet", petSchema);
 export const Settings =
   mongoose.models.Settings || mongoose.model("Settings", siteSettingsSchema);
+  export const Veterinary = mongoose.models.Veterinary || mongoose.model("Veterinary", veterinarySchema);
+  export const PetStore = mongoose.models.PetSrore || mongoose.model("PetStore", petstoreSchema);
+

@@ -225,6 +225,35 @@ const Sidebar = async () => {
 
             <ul className="menu bg-base-200 w-56 rounded-box">
               <li>
+                <h2 className="menu-title">Others</h2>
+                <ul>
+                  <Link href="#">
+                    <li>
+                      <span>
+                        <MdOutlinePets className="mr-1" /> Lost & Found Pets
+                      </span>
+                    </li>
+                  </Link>
+                  <Link href="#">
+                    <li>
+                      <span>
+                        <FcApproval className="mr-1" /> Veterinary{" "}
+                      </span>
+                    </li>
+                  </Link>
+                  <Link href="#">
+                    <li>
+                      <span>
+                        <MdOutlinePets className="mr-1" /> Pets Store
+                      </span>
+                    </li>
+                  </Link>
+                </ul>
+              </li>
+            </ul>
+
+            <ul className="menu bg-base-200 w-56 rounded-box">
+              <li>
                 <h2 className="menu-title">MyPet Development</h2>
                 <ul>
                   <Link
