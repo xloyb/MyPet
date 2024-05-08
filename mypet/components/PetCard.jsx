@@ -1,15 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-interface PetCardProps {
-  title: string;
-  imageUrl: string;
-  description: string;
-  pid?: String;
-  uid?: String;
-}
 
-const PetCard: React.FC<PetCardProps> = ({
+
+const PetCard = ({
   title,
   imageUrl,
   description,
@@ -18,7 +12,7 @@ const PetCard: React.FC<PetCardProps> = ({
 }) => {
   return (
     <div
-      key={pid}
+     key={pid}
       className="mt-6 card card-compact w-80 bg-base-100 shadow-xl"
     >
       <figure>

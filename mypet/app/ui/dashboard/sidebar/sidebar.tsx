@@ -196,7 +196,7 @@ const Sidebar = async () => {
 
             <ul className="menu bg-base-200 w-56 rounded-box">
               <li>
-                <h2 className="menu-title">Adoption</h2>
+                <h2 className="menu-title">Main</h2>
                 <ul>
                   <Link href="/dashboard/petslist">
                     <li>
@@ -209,6 +209,13 @@ const Sidebar = async () => {
                     <li>
                       <span>
                         <FcApproval className="mr-1" /> Adoption Requests{" "}
+                      </span>
+                    </li>
+                  </Link>
+                  <Link href="/dashboard/pets/add">
+                    <li>
+                      <span>
+                        <MdOutlinePets className="mr-1" /> Add Pet for Adoption
                       </span>
                     </li>
                   </Link>

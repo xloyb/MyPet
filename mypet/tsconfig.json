@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/authconfig.js", "app/ui/login/loginForm/loginForm.jsx", "app/login/page.jsx", "app/ui/dashboard/sidebar/sidebar.tsx", "app/dashboard/modcp/page.tsx", "app/dashboard/upload/page.jsx", "pages/api/upload.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/authconfig.js", "app/ui/login/loginForm/loginForm.jsx", "app/login/page.jsx", "app/ui/dashboard/sidebar/sidebar.tsx", "app/dashboard/modcp/page.tsx", "app/dashboard/upload/page.jsx", "pages/api/upload.ts", "components/PetCard.jsx"],
   "exclude": ["node_modules"]
 }
