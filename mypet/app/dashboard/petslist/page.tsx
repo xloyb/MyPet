@@ -22,8 +22,7 @@ const PetsList = async ({ dashboard }) => {
             title={pet.name}
             //  imageUrl={pet.img || "/images/default-Pet.png"}
             imageUrl={pet.img ? `/img/${pet.img}` : "/images/default-Pet.png"}
-            description={pet.desc}
-          />
+            description={pet.desc} uid={undefined} added={pet.added}  />
         ))}
       </div>
     </div>

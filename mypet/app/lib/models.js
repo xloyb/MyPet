@@ -55,7 +55,6 @@ const petSchema = new mongoose.Schema(
     },
     price: {
       type: Number,
-      required: true,
       min: 0,
     },
     stock: {
@@ -67,6 +66,9 @@ const petSchema = new mongoose.Schema(
       type: String,
     },
     age: {
+      type: String,
+    },
+    added: {
       type: String,
     },
   },

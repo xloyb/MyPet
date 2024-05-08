@@ -5,11 +5,17 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
 const Page = async () => {
- 
+
+  const { user } = await auth();
+  if (!user.isAdmin && !user.isTeam) {
+    redirect("/dashboard/403");
+  }
+
   return (
     <div className={styles.home_container}>
       <div className="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
         <div className="p-2 md:p-4">
+          
           <div className="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
             <h2 className="pl-6 text-2xl font-bold sm:text-xl">Add Pet</h2>
 
@@ -92,23 +98,7 @@ const Page = async () => {
                   ></textarea>
                 </div>
 
-                <div className="mb-2 sm:mb-6">
-                  <label
-                    htmlFor="price"
-                    className="block mb-2 text-sm font-medium  dark:text-white"
-                  >
-                    Price
-                  </label>
-                  <input
-                    type="number"
-                    id="price"
-                    name="price"
-                    className=" border border-indigo-300  text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
-                    placeholder="Price"
-                    min="0"
-                    required
-                  />
-                </div>
+                
 
                 <div className="mb-2 sm:mb-6">
                   <label
@@ -143,6 +133,17 @@ const Page = async () => {
                     placeholder="Age"
                   />
                 </div>
+
+  <input
+    type="hidden"
+    id="added"
+    name="added"
+    className="border border-indigo-300 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
+    value={!user.isAdmin && !user.isTeam ? "byuser" : "byteam"}
+
+  />
+
+
 
                 <div className="flex justify-end">
                   <button

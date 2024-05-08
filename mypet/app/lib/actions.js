@@ -312,7 +312,7 @@ export const addNotification = async (formData) => {
 };
 
 export const addPet = async (formData) => {
-  const { breed, name, desc, price, stock, file, age } =
+  const { breed, name, desc, added, stock, file, age } =
     Object.fromEntries(formData);
 
   let imageUrl = "";
@@ -331,7 +331,7 @@ export const addPet = async (formData) => {
       breed,
       name,
       desc,
-      price,
+      added,
       stock,
       img: imageUrl || "",
       age,

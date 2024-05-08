@@ -9,11 +9,12 @@ const PetCard = ({
   description,
   pid,
   uid,
+  added,
 }) => {
   return (
     <div
      key={pid}
-      className="mt-6 card card-compact w-80 bg-base-100 shadow-xl"
+      className="mt-6 card card-compact w-80 bg-base-100 shadow-xl" id={added}
     >
       <figure>
         <img src={imageUrl} alt={title} />
