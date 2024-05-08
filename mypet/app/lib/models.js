@@ -76,7 +76,6 @@ const petSchema = new mongoose.Schema(
 );
 
 
-
 const veterinarySchema = new mongoose.Schema(
   {
     name: {
