@@ -5,8 +5,6 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 
 const Page = async () => {
-  const { user } = await auth();
-
   return (
     <div className={styles.home_container}>
       <div className="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
@@ -40,7 +38,7 @@ const Page = async () => {
 
   {/* Lost Pet Information Inputs */}
   <div className="items-center mt-8 sm:mt-14">
-    {/* Name and Breed */}
+    {/* Name, Breed, and Lost Date */}
     <div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
       {/* Name */}
       <div className="w-full">
@@ -67,6 +65,19 @@ const Page = async () => {
           name="breed"
           className="border border-indigo-300 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
           placeholder="Breed"
+          required
+        />
+      </div>
+      {/* Lost Date */}
+      <div className="w-full">
+        <label htmlFor="lostDate" className="block mb-2 text-sm font-medium dark:text-white">
+          Lost Date
+        </label>
+        <input
+          type="date"
+          id="lostDate"
+          name="lostDate"
+          className="border border-indigo-300 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
           required
         />
       </div>

@@ -96,6 +96,9 @@ const lostpetSchema = new mongoose.Schema(
     age: {
       type: String,
     },
+    lostDate: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

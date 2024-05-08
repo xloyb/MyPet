@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { AdoptionRequest, Pet, Settings, User , Veterinary, PetStore} from "./models";
+import { AdoptionRequest, Pet, Settings, User , Veterinary, PetStore, LostPet} from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
@@ -373,6 +373,40 @@ export const addPetStore = async (formData) => {
   } catch (err) {
     console.log(err);
     throw new Error("Failed to create PetStore!");
+  }
+
+  redirect("/dashboard/pets");
+};
+
+
+export const addLostPet = async (formData) => {
+  const { name, breed, desc, age, lostDate, file } = Object.fromEntries(formData);
+
+  let imageUrl = "";
+
+  if (file instanceof File && file.size > 0) {
+    imageUrl = await uploadImageToServer(file, file.name);
+    console.log(imageUrl);
+  } else {
+    console.log("image is empty");
+  }
+
+  try {
+    connectToDB();
+
+    const newLostPet = new LostPet({
+      name,
+      breed,
+      desc,
+      age,
+      lostDate,
+      img: imageUrl || "",
+    });
+
+    await newLostPet.save();
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to create Lost Pet!");
   }
 
   redirect("/dashboard/pets");
