@@ -76,6 +76,32 @@ const petSchema = new mongoose.Schema(
 );
 
 
+const lostpetSchema = new mongoose.Schema(
+  {
+    breed: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
+    img: {
+      type: String,
+    },
+    age: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
+
+
 const veterinarySchema = new mongoose.Schema(
   {
     name: {
@@ -187,4 +213,5 @@ export const Settings =
   mongoose.models.Settings || mongoose.model("Settings", siteSettingsSchema);
   export const Veterinary = mongoose.models.Veterinary || mongoose.model("Veterinary", veterinarySchema);
   export const PetStore = mongoose.models.PetStore || mongoose.model("PetStore", petstoreSchema);
+  export const LostPet = mongoose.models.LostPet || mongoose.model("LostPet", lostpetSchema);
 
