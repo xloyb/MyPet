@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "../dashboard.module.css";
-import VetStore from "@/components/vet_store";
-import { fetchPets } from "@/app/lib/data";
+import Lostpet from "@/components/Lostpet";
+import { fetchlostpets } from "@/app/lib/data";
 import { auth } from "@/auth";
 
 const PetsList = async ({ dashboard }) => {
-  const pets = await fetchPets();
-  const { user } = await auth();
-
+  const lostpets = await fetchlostpets();
+console.log(lostpets)
   return (
     <div className={styles.home_container}>
       <div
@@ -15,8 +14,10 @@ const PetsList = async ({ dashboard }) => {
       >
         {" "}
 
-        <VetStore/>
-        <VetStore/>
+        {lostpets.map((p) => (
+          <Lostpet
+            p={p} />
+        ))}
 
       </div>
     </div>

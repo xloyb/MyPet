@@ -1,7 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-const Vet_Store = ({p}) => {
+
+
+const Lostpet = ({p}) => {
   return (
     <div
      key={p.id}
@@ -11,9 +13,11 @@ const Vet_Store = ({p}) => {
         <img src={p.img ? `/img/${p.img}` : "/images/default-Pet.png"} alt="image" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{p.name}</h2>
-        <div className="badge badge-outline">{p.location}</div>
+      <div className="badge badge-outline">{p.name}</div>
+        <div className="badge badge-outline">{p.breed}</div>
         <div className="badge badge-outline">{p.phone}</div>
+        <div className="badge badge-outline">{p.lostDate}</div>
+
         <p> {p.desc} </p>
         <div className="card-actions justify-end">
             <button className="btn btn-primary">Contact</button>
@@ -24,4 +28,4 @@ const Vet_Store = ({p}) => {
   );
 };
 
-export default Vet_Store;
+export default Lostpet;

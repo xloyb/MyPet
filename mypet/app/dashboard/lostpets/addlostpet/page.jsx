@@ -111,6 +111,27 @@ const Page = async () => {
         placeholder="Age"
       />
     </div>
+     {/* Phone */}
+     <div className="w-full">
+                    <label
+                      htmlFor="phone"
+                      className="block mb-2 text-sm font-medium dark:text-white"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      className="border border-indigo-300 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
+                      placeholder="Phone Number"
+                      pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}"
+                      required
+                    />
+                    <small className="text-xs text-gray-400">
+                      Format: xx-xxx-xxx
+                    </small>
+                  </div>
 
     {/* Submit Button */}
     <div className="flex justify-end">
