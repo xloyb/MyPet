@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "663baf585307ad596a7e0e3b"
+  },
+  "breed": "dsfsdf",
+  "name": "sdfsfd",
+  "desc": "sfdsfsf",
+  "img": "MyPet_1OrEiypexels-photo-356378.jpeg",
+  "age": "3",
+  "createdAt": {
+    "$date": "2024-05-08T16:59:04.629Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-08T16:59:04.629Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663cba63a2804e3e3379cff2"
+  },
+  "breed": "sdf",
+  "name": "sqdfg",
+  "desc": "xsdvfgbn",
+  "img": "",
+  "age": "3",
+  "lostDate": "2024-05-15",
+  "phone": "00-000-000",
+  "createdAt": {
+    "$date": "2024-05-09T11:58:27.113Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-09T11:58:27.113Z"
+  },
+  "__v": 0
+}]

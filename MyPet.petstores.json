@@ -1,0 +1,68 @@
+[{
+  "_id": {
+    "$oid": "663cc4aba2804e3e3379d145"
+  },
+  "name": "Furry Friends Emporium",
+  "location": "456 Oak Avenue, Townsville",
+  "phone": "55-123-456",
+  "desc": "Your one-stop shop for all things furry!",
+  "img": "MyPet_OjUFzNpexels-photo-356378.jpeg",
+  "createdAt": {
+    "$date": "2024-05-09T12:42:19.925Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-09T12:42:19.925Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663cc4dfa2804e3e3379d159"
+  },
+  "name": "Furry Friends Emporium",
+  "location": "456 Oak Avenue, Townsville",
+  "phone": "00-000-000",
+  "desc": "Your one-stop shop for all things furry!",
+  "img": "MyPet_6ppsUgpexels-photo-356378.jpeg",
+  "createdAt": {
+    "$date": "2024-05-09T12:43:11.256Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-09T12:43:11.256Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663cc52ea2804e3e3379d16a"
+  },
+  "name": "Name: Paws and Claws Haven",
+  "location": "Location: 789 Elm Street, Villagetown",
+  "phone": "00-000-000",
+  "desc": "Description: Providing loving care for your pets since 2005!\r\n",
+  "img": "MyPet_rzHSwwpexels-photo-356378.jpeg",
+  "createdAt": {
+    "$date": "2024-05-09T12:44:30.774Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-09T12:44:30.774Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663cc552a2804e3e3379d176"
+  },
+  "name": "Tail Waggers Emporium",
+  "location": " 222 Maple Road, Citytown",
+  "phone": "00-000-000",
+  "desc": "Description: Wagging tails guaranteed!\r\n",
+  "img": "MyPet_9k95iJpexels-photo-356378.jpeg",
+  "createdAt": {
+    "$date": "2024-05-09T12:45:06.361Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-09T12:45:06.361Z"
+  },
+  "__v": 0
+}]

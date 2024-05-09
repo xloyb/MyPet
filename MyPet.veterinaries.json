@@ -1,0 +1,68 @@
+[{
+  "_id": {
+    "$oid": "663cc5a6a2804e3e3379d186"
+  },
+  "name": "Name: Healthy Paws Veterinary Clinic",
+  "location": "Location: 123 Oak Street, Cityville",
+  "phone": "00-000-000",
+  "desc": "Description: Providing compassionate care for pets of all shapes and sizes.\r\n",
+  "img": "MyPet_qR582Dpexels-photo-356378.jpeg",
+  "createdAt": {
+    "$date": "2024-05-09T12:46:30.897Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-09T12:46:30.897Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663cc5d3a2804e3e3379d192"
+  },
+  "name": "Name: Purrfect Paws Animal Hospital",
+  "location": "Location: 456 Elm Avenue, Townsville",
+  "phone": "00-000-000",
+  "desc": "Description: Wagging tails, healthy pets!\r\n",
+  "img": "MyPet_IfuxFtpexels-photo-356378.jpeg",
+  "createdAt": {
+    "$date": "2024-05-09T12:47:15.035Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-09T12:47:15.035Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663cc5f3a2804e3e3379d19e"
+  },
+  "name": "Name: Loving Care Veterinary Clinic",
+  "location": "Location: 789 Maple Road, Villagetown",
+  "phone": "00-000-000",
+  "desc": "Description: Your pet's health is our top priority.\r\n",
+  "img": "MyPet_FPDvW9pexels-photo-356378.jpeg",
+  "createdAt": {
+    "$date": "2024-05-09T12:47:47.322Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-09T12:47:47.322Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "663cc617a2804e3e3379d1aa"
+  },
+  "name": "Name: Feathered Friends Avian Clinic",
+  "location": "Location: 222 Birch Street, Countryside",
+  "phone": "00-000-000",
+  "desc": "Description: Specialized care for birds of all feathers.\r\n",
+  "img": "MyPet_75RweVpexels-photo-356378.jpeg",
+  "createdAt": {
+    "$date": "2024-05-09T12:48:23.144Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-09T12:48:23.144Z"
+  },
+  "__v": 0
+}]
