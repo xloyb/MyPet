@@ -382,7 +382,7 @@ export const addPetStore = async (formData) => {
 
 
 export const addLostPet = async (formData) => {
-  const { name, breed, desc, age, lostDate, file } = Object.fromEntries(formData);
+  const { name, breed, desc, age,phone, lostDate, file } = Object.fromEntries(formData);
 
   let imageUrl = "";
 
@@ -401,6 +401,7 @@ export const addLostPet = async (formData) => {
       breed,
       desc,
       age,
+      phone,
       lostDate,
       img: imageUrl || "",
     });
