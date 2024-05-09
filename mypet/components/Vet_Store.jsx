@@ -3,18 +3,20 @@ import React from "react";
 
 
 
-const Vet_Store = () => {
+const Vet_Store = ({p}) => {
   return (
     <div
-     key="test"
+     key={p.id}
       className="mt-6 card card-compact w-80 bg-base-100 shadow-xl" 
     >
       <figure>
-        <img src="http://localhost:3000/img/MyPet_AhJtjHmanage_post.PNG" alt="dfdf" />
+        <img src={p.img ? `/img/${p.img}` : "/images/default-Pet.png"} alt="image" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">test</h2>
-        <p>PetCard</p>
+        <h2 className="card-title">{p.name}</h2>
+        <div class="badge badge-outline">{p.location}</div>
+        <div class="badge badge-outline">{p.phone}</div>
+        <p> {p.desc} </p>
         <div className="card-actions justify-end">
             <button className="btn btn-primary">Contact</button>
             
