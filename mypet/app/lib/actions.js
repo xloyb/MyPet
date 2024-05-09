@@ -313,7 +313,7 @@ export const addNotification = async (formData) => {
 
 
 export const addVeterinary = async (formData) => {
-  const { name, location,  desc, file } =
+  const { name, location,phone,  desc, file } =
     Object.fromEntries(formData);
 
   let imageUrl = "";
@@ -332,6 +332,7 @@ export const addVeterinary = async (formData) => {
       name,
       location,
       desc,
+      phone,
       img: imageUrl || "",
     });
 
