@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "../dashboard.module.css";
 import VetStore from "@/components/vet_store";
-import { fetchPetStores } from "@/app/lib/data";
+import { fetchVeterinaries } from "@/app/lib/data";
 import { auth } from "@/auth";
 
-const fetchPetStorespage = async () => {
-  const ps = await fetchPetStores();
+const PetsList = async ({ dashboard }) => {
+  const vets = await fetchVeterinaries();
   const { user } = await auth();
-  console.log(ps);
+console.log(vets)
   return (
     <div className={styles.home_container}>
       <div
@@ -15,16 +15,14 @@ const fetchPetStorespage = async () => {
       >
         {" "}
 
-
-        {ps.map((p) => (
+        {vets.map((p) => (
           <VetStore
             p={p} />
         ))}
-
 
       </div>
     </div>
   );
 };
 
-export default fetchPetStorespage;
+export default PetsList;
