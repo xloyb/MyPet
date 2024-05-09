@@ -7,7 +7,6 @@ import { auth } from "@/auth";
 const fetchPetStorespage = async () => {
   const ps = await fetchPetStores();
   const { user } = await auth();
-  console.log(ps);
   return (
     <div className={styles.home_container}>
       <div
