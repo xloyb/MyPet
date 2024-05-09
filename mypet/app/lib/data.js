@@ -1,4 +1,4 @@
-import { AdoptionRequest, Pet, Settings, User } from "./models";
+import { AdoptionRequest, Pet, PetStore, Settings, User, Veterinary } from "./models";
 import { connectToDB } from "./utils";
 import { Types } from "mongoose";
 
@@ -76,6 +76,28 @@ export const fetchPets = async (q) => {
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch Pets!");
+  }
+};
+
+export const fetchVeterinaries = async (q) => {
+  try {
+    connectToDB();
+    const Vets = await Veterinary.find()
+    return Vets;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch Veterinaries!");
+  }
+};
+
+export const fetchPetStores = async (q) => {
+  try {
+    connectToDB();
+    const ps = await PetStore.find();
+    return ps;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch Pets Stores!");
   }
 };
 
