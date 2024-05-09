@@ -6,7 +6,6 @@ import { auth } from "@/auth";
 
 const PetsList = async ({ dashboard }) => {
   const lostpets = await fetchlostpets();
-console.log(lostpets)
   return (
     <div className={styles.home_container}>
       <div

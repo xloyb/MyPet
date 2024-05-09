@@ -3,14 +3,15 @@ import Link from "next/link";
 import React from "react";
 import { CgProfile } from "react-icons/cg";
 import { CiSettings, CiTimer } from "react-icons/ci";
-import { FaBug, FaThList } from "react-icons/fa";
+import { FaBug, FaSearch, FaThList } from "react-icons/fa";
 import { FcApproval, FcIdea } from "react-icons/fc";
 import { IoIosAddCircle, IoMdPersonAdd } from "react-icons/io";
-import { IoSettings } from "react-icons/io5";
+import { IoSettings, IoStorefrontOutline } from "react-icons/io5";
 import {
   MdAdminPanelSettings,
   MdDashboard,
   MdOutlineBugReport,
+  MdOutlineHealthAndSafety,
   MdOutlinePets,
 } from "react-icons/md";
 
@@ -148,6 +149,24 @@ const Sidebar = async () => {
                         </span>
                       </li>
                     </Link>
+
+
+                    <Link href="/dashboard/modcp/addveterinary">
+                      <li className="font-medium ml-8 flex ">
+                        <span>
+                          <MdOutlineHealthAndSafety className="mr-1" />Add Veterinary{" "}
+                        </span>
+                      </li>
+                    </Link>
+
+
+                    <Link href="/dashboard/modcp/addpetstore">
+                      <li className="font-medium ml-8 flex ">
+                        <span>
+                          <IoStorefrontOutline className="mr-1" /> Add Pets Store{" "}
+                        </span>
+                      </li>
+                    </Link>
                   </ul>
                 </div>
               </div>
@@ -227,24 +246,24 @@ const Sidebar = async () => {
               <li>
                 <h2 className="menu-title">Others</h2>
                 <ul>
-                  <Link href="#">
+                  <Link href="/dashboard/lostpets">
                     <li>
                       <span>
-                        <MdOutlinePets className="mr-1" /> Lost & Found Pets
+                        <FaSearch className="mr-1" /> Lost & Found Pets
                       </span>
                     </li>
                   </Link>
-                  <Link href="#">
+                  <Link href="/dashboard/veterinarians">
                     <li>
                       <span>
-                        <FcApproval className="mr-1" /> Veterinary{" "}
+                        <MdOutlineHealthAndSafety className="mr-1" /> Veterinary{" "}
                       </span>
                     </li>
                   </Link>
-                  <Link href="#">
+                  <Link href="/dashboard/petstores">
                     <li>
                       <span>
-                        <MdOutlinePets className="mr-1" /> Pets Store
+                        <IoStorefrontOutline className="mr-1" /> Pets Store
                       </span>
                     </li>
                   </Link>
