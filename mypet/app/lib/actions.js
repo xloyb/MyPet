@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { AdoptionRequest, Pet, Settings, User , Veterinary, PetStore, LostPet} from "./models";
+import { AdoptionRequest, Pet, Settings, User , Veterinary, PetStore, LostPet, Trainer, PetsMating} from "./models";
 import { connectToDB } from "./utils";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
@@ -380,6 +380,70 @@ export const addPetStore = async (formData) => {
   redirect("/dashboard/pets");
 };
 
+export const addMating = async (formData) => {
+  const { name, breed, desc, phone, file } = Object.fromEntries(formData);
+
+  let imageUrl = "";
+
+  if (file instanceof File && file.size > 0) {
+    imageUrl = await uploadImageToServer(file, file.name);
+    console.log(imageUrl);
+  } else {
+    console.log("image is empty");
+  }
+
+  try {
+    const newMating = new PetsMating({
+      name,
+      breed,
+      desc,
+      phone,
+      img: imageUrl || "",
+    });
+
+    await newMating.save();
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to create Mating!");
+  }
+  redirect("/dashboard/pets");
+};
+
+
+export const addTrainer = async (formData) => {
+  const { coachname, breeds, desc, phone, file } = Object.fromEntries(formData);;
+
+//   console.log('Coach Name:', coachname);
+// console.log('Breeds:', breeds);
+// console.log('Description:', desc);
+// console.log('Phone Number:', phone);
+// console.log('File:', file);
+
+  let imageUrl = "";
+
+  if (file instanceof File && file.size > 0) {
+    imageUrl = await uploadImageToServer(file, file.name);
+    console.log(imageUrl);
+  } else {
+    console.log("image is empty");
+  }
+
+  try {
+    const newTrainer = new Trainer({
+      coachname,
+      breeds,
+      desc,
+      phone,
+      img: imageUrl || "",
+    });
+
+    await newTrainer.save();
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to create Trainer!");
+  }
+  redirect("/dashboard/pets");
+};
 
 export const addLostPet = async (formData) => {
   const { name, breed, desc, age,phone, lostDate, file } = Object.fromEntries(formData);

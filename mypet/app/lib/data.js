@@ -1,4 +1,4 @@
-import { AdoptionRequest, Pet, PetStore, Settings, User, Veterinary, LostPet } from "./models";
+import { AdoptionRequest, Pet, PetStore, Settings, User, Veterinary, LostPet, Trainer, PetsMating } from "./models";
 import { connectToDB } from "./utils";
 import { Types } from "mongoose";
 
@@ -110,6 +110,29 @@ export const fetchlostpets = async () => {
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch Lost Pets!");
+  }
+};
+
+
+export const fetchMatingPets = async () => {
+  try {
+    connectToDB();
+    const mp = await PetsMating.find();
+    return mp;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch Lost Pets!");
+  }
+};
+
+export const fetchTrainer = async () => {
+  try {
+    connectToDB();
+    const t = await Trainer.find();
+    return t;
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to fetch Trainers!");
   }
 };
 

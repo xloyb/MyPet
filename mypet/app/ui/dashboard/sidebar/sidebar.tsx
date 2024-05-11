@@ -1,12 +1,14 @@
 import { auth, signOut } from "@/auth";
 import Link from "next/link";
 import React from "react";
+import { BsSearchHeart } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { CiSettings, CiTimer } from "react-icons/ci";
 import { FaBug, FaSearch, FaThList } from "react-icons/fa";
 import { FcApproval, FcIdea } from "react-icons/fc";
 import { IoIosAddCircle, IoMdPersonAdd } from "react-icons/io";
 import { IoSettings, IoStorefrontOutline } from "react-icons/io5";
+import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 import {
   MdAdminPanelSettings,
   MdDashboard,
@@ -118,7 +120,7 @@ const Sidebar = async () => {
                 <div className="collapse-content">
                   <ul>
                     <Link href="/dashboard/modcp">
-                      <li className="font-medium ml-8 flex ">
+                      <li>
                         <span>
                           <MdAdminPanelSettings className="mr-1" /> Mods
                           Controle Panel{" "}
@@ -127,7 +129,7 @@ const Sidebar = async () => {
                     </Link>
 
                     <Link href="/dashboard/pets">
-                      <li className="font-medium ml-8 flex ">
+                      <li>
                         <span>
                           <FaThList className="mr-1" /> Pets List{" "}
                         </span>
@@ -135,7 +137,7 @@ const Sidebar = async () => {
                     </Link>
 
                     <Link href="/dashboard/pets/add">
-                      <li className="font-medium ml-8 flex ">
+                      <li>
                         <span>
                           <IoIosAddCircle className="mr-1" /> Add Pet{" "}
                         </span>
@@ -143,7 +145,7 @@ const Sidebar = async () => {
                     </Link>
 
                     <Link href="/dashboard/managerequests">
-                      <li className="font-medium ml-8 flex ">
+                      <li>
                         <span>
                           <CgProfile className="mr-1" /> Manage Requests{" "}
                         </span>
@@ -152,7 +154,7 @@ const Sidebar = async () => {
 
 
                     <Link href="/dashboard/modcp/addveterinary">
-                      <li className="font-medium ml-8 flex ">
+                      <li>
                         <span>
                           <MdOutlineHealthAndSafety className="mr-1" />Add Veterinary{" "}
                         </span>
@@ -161,12 +163,19 @@ const Sidebar = async () => {
 
 
                     <Link href="/dashboard/modcp/addpetstore">
-                      <li className="font-medium ml-8 flex ">
+                      <li className="">
                         <span>
                           <IoStorefrontOutline className="mr-1" /> Add Pets Store{" "}
                         </span>
                       </li>
                     </Link>
+                    <Link href="/dashboard/modcp/addtrainer">
+                    <li>
+                      <span>
+                        <LiaChalkboardTeacherSolid className="mr-1" /> Add Pets Trainer
+                      </span>
+                    </li>
+                  </Link>
                   </ul>
                 </div>
               </div>
@@ -263,7 +272,23 @@ const Sidebar = async () => {
                   <Link href="/dashboard/petstores">
                     <li>
                       <span>
-                        <IoStorefrontOutline className="mr-1" /> Pets Store
+                        <IoStorefrontOutline className="mr-1" /> Pets Equipements Stores
+                      </span>
+                    </li>
+                  </Link>
+
+                  <Link href="/dashboard/petstainers">
+                    <li>
+                      <span>
+                        <LiaChalkboardTeacherSolid className="mr-1" /> Pets Trainers
+                      </span>
+                    </li>
+                  </Link>
+
+                  <Link href="/dashboard/mating">
+                    <li>
+                      <span>
+                        <BsSearchHeart className="mr-1" /> Pets Mating
                       </span>
                     </li>
                   </Link>

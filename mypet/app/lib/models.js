@@ -39,6 +39,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+
 const petSchema = new mongoose.Schema(
   {
     breed: {
@@ -69,6 +70,57 @@ const petSchema = new mongoose.Schema(
       type: String,
     },
     added: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
+
+const petstrainersSchema = new mongoose.Schema(
+  {
+    coachname:{
+      type:String,
+      require:true
+    },
+    breeds: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
+    img: {
+      type: String,
+    },
+    phone: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
+
+
+const petsmatingSchema = new mongoose.Schema(
+  {
+    name:{
+      type:String,
+      require:true
+    },
+    breed: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
+    img: {
+      type: String,
+    },
+    phone: {
       type: String,
     },
   },
@@ -220,4 +272,7 @@ export const Settings =
   export const Veterinary = mongoose.models.Veterinary || mongoose.model("Veterinary", veterinarySchema);
   export const PetStore = mongoose.models.PetStore || mongoose.model("PetStore", petstoreSchema);
   export const LostPet = mongoose.models.LostPet || mongoose.model("LostPet", lostpetSchema);
+  export const Trainer = mongoose.models.Trainer || mongoose.model("Trainer", petstrainersSchema);
+  export const PetsMating = mongoose.models.PetsMating || mongoose.model("PetsMating", petsmatingSchema);
+
 
